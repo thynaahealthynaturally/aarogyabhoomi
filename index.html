@@ -286,8 +286,8 @@ section { padding:7rem 0; }
 .team-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:3rem; margin-top:3rem; }
 .team-card { background:white; overflow:hidden; box-shadow:0 2px 20px rgba(61,43,31,0.08); }
 .team-card.featured { grid-column:1 / -1; display:flex; gap:0; }
-.team-card img { width:100%; height:280px; object-fit:cover; object-position:top; display:block; }
-.team-card.featured img { width:340px; height:auto; flex-shrink:0; object-position:top center; }
+.team-card img { width:100%; height:320px; object-fit:cover; object-position:center 15%; display:block; }
+.team-card.featured img { width:380px; height:auto; max-height:420px; flex-shrink:0; object-fit:cover; object-position:center 10%; }
 .team-card-body { padding:2rem; }
 .team-card.featured .team-card-body { display:flex; flex-direction:column; justify-content:center; }
 .team-name { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--soil); margin-bottom:0.2rem; font-weight:700; }
@@ -767,31 +767,16 @@ footer { background:#0F0A05; padding:5rem 0 3rem; }
 <!-- JOIN FORM -->
 <section class="join-section" id="join">
   <div class="container">
-    <div class="join-grid">
-      <div class="join-left">
-        <div class="section-eyebrow reveal">Take the First Step</div>
-        <h2 class="section-heading reveal">Join Aarogya Bhoomi</h2>
-        <div class="reveal">
-          <p>Fill this form and our team will reach you within 24 hours to guide you through the right plan for your family.</p>
-          <p>Every family that joins makes the farmer's path a little less lonely. Makes the soil a little more alive. And puts food on your table that you can finally trust completely.</p>
-          <p style="font-family:'Playfair Display',serif; font-style:italic; color:var(--soil); font-size:1.1rem; margin-top:2rem;">"The question is not whether this matters to you.<br>You already know it does.<br>The question is whether you will act on it."</p>
-        </div>
-      </div>
-      <div class="form-card reveal" style="transition-delay:0.15s;">
-        <h3>Let's Find Your Plan</h3>
-        <p>Our team will guide you through the right option for your family.</p>
-        <div class="form-group"><label>Your Name</label><input type="text" placeholder="Full name" id="f-name"></div>
-        <div class="form-group"><label>WhatsApp Number</label><input type="tel" placeholder="+91 XXXXX XXXXX" id="f-phone"></div>
-        <div class="form-group"><label>Your City</label><input type="text" placeholder="City" id="f-city"></div>
-        <div class="form-group"><label>Family Size</label>
-          <select id="f-family"><option value="">Select...</option><option>2 people</option><option>3–4 people</option><option>5+ people</option></select>
-        </div>
-        <div class="form-group"><label>Farm Share Interest</label>
-          <select id="f-plan"><option value="">Which plan interests you?</option><option>Soil Starter (3 months)</option><option>Root Sharer (Yearly)</option><option>Earth Guardian (Yearly Extended)</option><option>Not sure — help me decide</option></select>
-        </div>
-        <button class="form-submit" onclick="handleJoin()">Send My Interest →</button>
-        <div class="success-msg" id="join-success">✦ Thank you! Our team will reach you on WhatsApp within 24 hours.</div>
-      </div>
+    <div style="text-align:center; margin-bottom:3rem;">
+      <div class="section-eyebrow reveal" style="justify-content:center;">Take the First Step</div>
+      <h2 class="section-heading reveal" style="text-align:center;">Join Aarogya Bhoomi</h2>
+      <p class="reveal" style="color:var(--earth); max-width:600px; margin:0 auto 1rem; line-height:1.8; font-size:1rem;">Fill the form below and our team will reach you within 24 hours to guide you through the right plan for your family.</p>
+      <p class="reveal" style="font-family:'Playfair Display',serif; font-style:italic; color:var(--soil); font-size:1.1rem; max-width:500px; margin:0 auto 3rem;">"The question is not whether this matters to you.<br>You already know it does."</p>
+    </div>
+    <div class="reveal" style="max-width:800px; margin:0 auto; border:1px solid rgba(164,83,45,0.15); overflow:hidden; border-radius:2px;">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeiB3aq6LhO0yKJnw7hANzn7QiKHxMAFmzaHZCf_TuHpNtm-Q/viewform?embedded=true"
+        width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0"
+        style="display:block; background:white;">Loading…</iframe>
     </div>
   </div>
 </section>
@@ -868,8 +853,8 @@ footer { background:#0F0A05; padding:5rem 0 3rem; }
       </div>
       <div class="community-links">
         <a href="https://chat.whatsapp.com/KRHdGIo6HxWDbIVMe3bR22?mode=gi_t" target="_blank" rel="noopener" class="community-link whatsapp-link">💬 Join WhatsApp Community</a>
-        <a href="https://www.youtube.com/@thynaa" target="_blank" rel="noopener" class="community-link youtube-link">▶ YouTube Channel</a>
-        <a href="https://www.instagram.com/thynaa_healthynaturally/" target="_blank" rel="noopener" class="community-link ig-link">📷 Instagram</a>
+        <a href="https://www.youtube.com/@VishuddhiVibes" target="_blank" rel="noopener" class="community-link youtube-link">▶ YouTube Channel</a>
+        <a href="https://www.instagram.com/thynaahealthynaturally/" target="_blank" rel="noopener" class="community-link ig-link">📷 Instagram</a>
       </div>
     </div>
   </div>
@@ -884,12 +869,9 @@ footer { background:#0F0A05; padding:5rem 0 3rem; }
         <h3>Grow Your Own Food<br>at Your Balcony</h3>
         <p>A 5-page guide to starting your own kitchen garden — even from a small flat or apartment balcony. Real tips from our farmers, seasonal planting guides, and soil advice you can actually use.</p>
       </div>
-      <div class="reveal" style="transition-delay:0.15s; min-width:300px; display:flex; flex-direction:column; gap:0.8rem;">
-        <input type="text" class="pdf-form" style="display:block;" placeholder="Your name" id="pdf-name">
-        <input type="email" class="pdf-form" style="display:block;" placeholder="Email address" id="pdf-email">
-        <input type="tel" class="pdf-form" style="display:block;" placeholder="WhatsApp number" id="pdf-phone">
-        <a href="https://forms.gle/BP2pkdUU51JRQXzw5" target="_blank" rel="noopener" class="pdf-btn">Get the Free Guide →</a>
-        <p style="color:rgba(255,255,255,0.55); font-size:0.75rem; text-align:center;">You'll be redirected to a short form to receive your guide.</p>
+      <div class="reveal" style="transition-delay:0.15s; display:flex; flex-direction:column; align-items:center; gap:1rem; min-width:260px;">
+        <a href="https://forms.gle/BP2pkdUU51JRQXzw5" target="_blank" rel="noopener" class="pdf-btn" style="width:100%; max-width:300px;">Get the Free Guide →</a>
+        <p style="color:rgba(255,255,255,0.55); font-size:0.75rem; text-align:center;">Takes 30 seconds. No spam. Ever.</p>
       </div>
     </div>
   </div>
@@ -935,8 +917,8 @@ footer { background:#0F0A05; padding:5rem 0 3rem; }
         <h4>Connect</h4>
         <ul>
           <li><a href="https://chat.whatsapp.com/KRHdGIo6HxWDbIVMe3bR22?mode=gi_t" target="_blank">WhatsApp Community</a></li>
-          <li><a href="https://www.youtube.com/@thynaa" target="_blank">YouTube Channel</a></li>
-          <li><a href="https://www.instagram.com/thynaa_healthynaturally/" target="_blank">Instagram</a></li>
+          <li><a href="https://www.youtube.com/@VishuddhiVibes" target="_blank">YouTube Channel</a></li>
+          <li><a href="https://www.instagram.com/thynaahealthynaturally/" target="_blank">Instagram</a></li>
           <li><a href="https://forms.gle/BP2pkdUU51JRQXzw5" target="_blank">Free Balcony Garden Guide</a></li>
         </ul>
       </div>
@@ -946,22 +928,22 @@ footer { background:#0F0A05; padding:5rem 0 3rem; }
           <li><a href="#join">Become a Co-Farmer</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="https://www.thynaa.com/Privacy_Policy" target="_blank">Privacy Policy</a></li>
-          <li><a href="mailto:thynaahealthynaturally@gmail.com">Contact Us</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#b7c3dfced9d6d6dfd2d6dbc3dfced9d6c3c2c5d6dbdbcef7d0dad6dedb99d4d8da">Contact Us</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <p>© 2024 Aarogya Bhoomi · Thynaa Healthy Naturally Private Limited · All rights reserved.</p>
       <div class="social-links">
-        <a href="https://www.instagram.com/thynaa_healthynaturally/" target="_blank" class="social-link" title="Instagram">📷</a>
-        <a href="https://www.youtube.com/@thynaa" target="_blank" class="social-link" title="YouTube">▶</a>
+        <a href="https://www.instagram.com/thynaahealthynaturally/" target="_blank" class="social-link" title="Instagram">📷</a>
+        <a href="https://www.youtube.com/@VishuddhiVibes" target="_blank" class="social-link" title="YouTube">▶</a>
         <a href="https://chat.whatsapp.com/KRHdGIo6HxWDbIVMe3bR22?mode=gi_t" target="_blank" class="social-link" title="WhatsApp">💬</a>
       </div>
     </div>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Scroll reveal
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
@@ -1018,9 +1000,4 @@ function handleJoin() {
 }
 
 // Nav shadow
-window.addEventListener('scroll', () => {
-  document.querySelector('nav').style.boxShadow = window.scrollY > 20 ? '0 2px 30px rgba(61,43,31,0.12)' : 'none';
-});
-</script>
-</body>
-</html>
+window.addEventListener
