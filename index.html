@@ -53,9 +53,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--cream);bor
 .slide-sub{font-size:0.95rem;line-height:1.6;opacity:0.9;margin-bottom:24px;max-width:440px;}
 .slide-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
 .slide-tag{border:1px solid rgba(255,255,255,0.5);padding:5px 14px;font-size:0.72rem;letter-spacing:0.08em;border-radius:20px;}
-.slide-btns{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:20;pointer-events:all;}
+/* .slide-btns{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:20;pointer-events:all;}
 .btn-primary{background:var(--green);color:#fff;padding:12px 24px;font-size:0.75rem;letter-spacing:0.12em;font-weight:700;text-decoration:none;display:inline-block;cursor:pointer;transition:background 0.2s;position:relative;z-index:20;}
-.btn-primary:hover{background:var(--green-dark);}
+.btn-primary:hover{background:var(--green-dark);} */
 .slider-nav{position:absolute;bottom:20px;right:40px;display:flex;gap:8px;z-index:100;}
 .slider-dot{width:10px;height:10px;border-radius:50%;border:2px solid #fff;cursor:pointer;transition:background 0.2s;}
 .slider-dot.active{background:#fff;}
@@ -89,6 +89,37 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--cream);bor
 .stat-num{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:900;color:var(--terracotta);line-height:1;}
 .stat-bold{font-weight:900;margin-bottom:6px;font-size:0.9rem;letter-spacing:0.05em;}
 .stat-desc{font-size:0.85rem;line-height:1.5;color:#5a3e28;max-width:200px;margin:0 auto;}
+.stat-link-block{
+  display:block;
+  color:inherit;
+  text-decoration:none;
+}
+
+.stat-link-block:hover{
+  opacity:0.85;
+}
+
+.stat-link-block{
+  display:block;
+  color:inherit;
+  text-decoration:none;
+}
+
+.stat-link-block:hover{
+  opacity:0.85;
+}
+
+/* ADD THIS BELOW */
+.stat-link-block::after{
+  content:" ↗";
+  font-size:0.8rem;
+  opacity:0;
+  transition:0.2s;
+}
+
+.stat-link-block:hover::after{
+  opacity:0.6;
+}
 
 /* ============ SECTION 5: THREE PROBLEMS ============ */
 #problems{padding:70px 80px;background:#2d2d10;}
@@ -262,14 +293,113 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--cream);bor
 .btn-ig{background:#1a1a1a;color:#fff;padding:14px 24px;font-size:0.82rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:8px;}
 
 /* ============ SECTION 20: FREE RESOURCE ============ */
-#resource{padding:60px 80px;background:#2e1e0a;}
-.resource-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
-.resource-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.3rem);font-weight:900;color:#f5f0e8;margin-bottom:16px;}
-.resource-sub{font-size:0.92rem;line-height:1.7;color:rgba(245,240,232,0.7);margin-bottom:28px;}
-.btn-gold{display:inline-block;background:var(--gold);color:#fff;padding:14px 28px;font-size:0.78rem;letter-spacing:0.12em;font-weight:700;text-decoration:none;}
-.resource-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:50px 40px;text-align:center;}
-.resource-card .icon{font-size:1.5rem;margin-bottom:12px;}
-.resource-card p{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:rgba(245,240,232,0.6);}
+#resource {
+  padding: 80px 100px;
+  background: linear-gradient(135deg, #2e1e0a, #1f1407);
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.resource-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 900;
+  color: #f5f0e8;
+  margin-bottom: 18px;
+}
+
+.resource-sub {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: rgba(245,240,232,0.75);
+  margin-bottom: 32px;
+  max-width: 480px;
+}
+
+/* CTA Button Upgrade */
+.btn-gold {
+  display: inline-block;
+  background: linear-gradient(135deg, #c6a85a, #a8893f);
+  color: #fff;
+  padding: 14px 30px;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(198,168,90,0.25);
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(198,168,90,0.4);
+}
+
+/* Card Upgrade */
+.resource-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 60px 40px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  transition: all 0.4s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  border-color: rgba(198,168,90,0.4);
+}
+
+.resource-card .icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.resource-card p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: rgba(245,240,232,0.75);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  #resource {
+    padding: 60px 30px;
+  }
+
+  .resource-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .resource-sub {
+    max-width: 100%;
+  }
+
+  .resource-card {
+    padding: 40px 30px;
+  }
+}
+/* Align CTA to center-right */
+.resource-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Bigger premium button */
+.big-btn {
+  font-size: 0.9rem;
+  padding: 18px 40px;
+  letter-spacing: 0.15em;
+}
 
 /* ============ SECTION 21: FAQ ============ */
 #faq{padding:80px 80px;background:var(--cream);}
@@ -329,14 +459,13 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
 <!-- ===== NAV ===== -->
 <nav>
   <a href="#hero" class="nav-logo">
-    <img src="images/logo.png" alt="Aarogya Bhoomi Logo">
+    <img src="logo.png" alt="Aarogya Bhoomi Logo">
     <span class="nav-logo-text">Aarogya<span>Bhoomi</span></span>
   </a>
   <ul class="nav-links">
-    <li><a href="#about">ABOUT</a></li>
-    <li><a href="#ourway">OUR WAY</a></li>
-    <li><a href="#cofarmer">CO-FARMER</a></li>
-    <li><a href="#plans">PLANS</a></li>
+    <li><a href="#about">THE PROBLEM</a></li>
+    <li><a href="#ourway">HOW WE GROW</a></li>
+    <li><a href="#cofarmer">BECOME A CO-FARMER</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <a href="#plans" class="nav-join">JOIN NOW</a>
@@ -345,10 +474,9 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
   </button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="toggleMenu()">ABOUT</a>
-  <a href="#ourway" onclick="toggleMenu()">OUR WAY</a>
-  <a href="#cofarmer" onclick="toggleMenu()">CO-FARMER</a>
-  <a href="#plans" onclick="toggleMenu()">PLANS</a>
+  <a href="#about" onclick="toggleMenu()">THE PROBLEM</a>
+  <a href="#ourway" onclick="toggleMenu()">HOW WE GROW</a>
+  <a href="#cofarmer" onclick="toggleMenu()">BECOME A CO-FARMER</a>
   <a href="#faq" onclick="toggleMenu()">FAQ</a>
   <a href="#plans" class="mob-join" onclick="toggleMenu()">JOIN NOW</a>
 </div>
@@ -356,31 +484,31 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
 <!-- ===== SECTION 1: HERO SLIDER ===== -->
 <section id="hero">
   <div class="slide active" id="slide-0">
-    <img class="slide-bg" src="images/slide1.jpg" alt="Farm">
+    <img class="slide-bg" src="slide1.jpg" alt="Farm">
     <div class="slide-overlay"></div>
     <div class="slide-content">
       <p class="slide-label">AAROGYA BHOOMI · SOHNA FARM, GURGAON</p>
-      <h1 class="slide-headline">Where we <em>heal the soil</em><br>with love — so it can heal all of us.</h1>
+      <h1 class="slide-headline">Where we <em>heal the soil</em><br>with love - so it can heal all of us.</h1>
       <p class="slide-sub">A natural farm. A living community. Food the way it was always meant to be.</p>
-      <div class="slide-btns">
+      <!-- <div class="slide-btns">
         <a href="#cofarmer" class="btn-primary">BECOME A CO-FARMER</a>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="slide" id="slide-1">
-    <img class="slide-bg" src="images/slide2.jpg" alt="Co-Farmers">
+    <img class="slide-bg" src="slide2.jpg" alt="Co-Farmers">
     <div class="slide-overlay"></div>
     <div class="slide-content">
       <p class="slide-label">THE CO-FARMER MODEL</p>
       <h1 class="slide-headline">You share the cost.<br><em>We share the harvest.</em></h1>
       <p class="slide-sub">Visit our natural farm. Bring your family, enjoy with children. Touch the soil. Be part of it.</p>
-      <div class="slide-btns">
+      <!-- <div class="slide-btns">
         <a href="#about" class="btn-primary">LEARN MORE</a>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="slide" id="slide-2">
-    <img class="slide-bg contain" src="images/slide3.jpg" alt="Farm Sign">
+    <img class="slide-bg contain" src="slide3.jpg" alt="Farm Sign">
     <div class="slide-overlay"></div>
     <div class="slide-content">
       <p class="slide-label">RISHI KRISHI</p>
@@ -390,9 +518,9 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
         <span class="slide-tag">🌿 Pest Management, not Killing</span>
         <span class="slide-tag">⚖️ Panchbhoota in Harmony</span>
       </div>
-      <div class="slide-btns">
+      <!-- <div class="slide-btns">
         <a href="#philosophy" class="btn-primary">OUR PRACTICES</a>
-      </div>
+      </div> -->
     </div>
   </div>
   <button class="slider-arrow prev" onclick="changeSlide(-1)">&#8592;</button>
@@ -415,12 +543,12 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
   <div class="section-label">A QUESTION WORTH ASKING</div>
   <h2 class="about-headline">Do you remember the mango that actually tasted like a mango?</h2>
   <div class="about-body">
-    <p>Your grandparents might have. When food made you feel strong — not just full. That food came from soil that was alive.</p>
-    <p>Now think about what you ate today. Do you know which soil it came from? How many days in cold storage — waxed, treated, made to look fresh?</p>
+    <p>Your grandparents might have. When food made you feel STRONG - not just FULL. That food came from SOIL that was ALIVE.</p>
+    <p>Now think about what you ate today. Do you know which soil it came from? How many days in cold storage - waxed, treated, made to look fresh?</p>
     <div class="blockquote"><p>We have confused shine with health.</p></div>
-    <p>Our vegetables look perfect. A full plate which feels like nourishment. Yet they are delivering pesticides to our children's bodies with every bite.</p>
+    <p>Today vegetables look perfect. A full plate which feels like nourishment. Yet they are delivering slow poison to our families bodies with every bite.</p>
     <p>The average Indian vegetable today travels through cold storage, ripening chambers, and chemical wax before it reaches your hand. The pesticide residue on what you call "fresh vegetables" would fail safety standards in many countries.</p>
-    <p><strong>This is not fear-mongering.</strong> This is what happens when a generation decided that cheap and convenient was the same as good.</p>
+    <p><strong>This is not fear-mongering.</strong> This is what happens when a generation decided that <strong>cheap and convenient</strong> was the same as good.</p>
     <p>The most dangerous thing? It looks completely normal.</p>
   </div>
 </section>
@@ -429,20 +557,26 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
 <section id="stats">
   <div class="stats-grid">
     <div class="stat-item">
-      <div class="stat-num">68%</div>
-      <p class="stat-bold">of India's soil</p>
-      <p class="stat-desc">is deficient in micronutrients due to chemical farming</p>
-    </div>
+  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.0" target="_blank" class="stat-link-block">
+    <div class="stat-num">50%+</div>
+    <p class="stat-bold">of India's soil</p>
+    <p class="stat-desc">deficient in one or more critical micronutrients - a crisis driven by decades of intensive chemical farming</p>
+  </a>
+</div>
     <div class="stat-item">
-      <div class="stat-num">3×</div>
-      <p class="stat-bold">more pesticide residue</p>
-      <p class="stat-desc">found in commercially grown produce than two decades ago</p>
-    </div>
+  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.71gcc62760l8" target="_blank" class="stat-link-block">
+    <div class="stat-num">2×</div>
+    <p class="stat-bold">more pesticide residue</p>
+    <p class="stat-desc">incidence found in Indian produce in just 5 years</p>
+  </a>
+</div>
     <div class="stat-item">
-      <div class="stat-num">1 in 4</div>
-      <p class="stat-bold">Indian children</p>
-      <p class="stat-desc">now show signs of nutritional deficiency despite eating enough calories</p>
-    </div>
+  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.cepxxj23qaq6" target="_blank" class="stat-link-block">
+    <div class="stat-num">1 in 3</div>
+    <p class="stat-bold">Indian children</p>
+    <p class="stat-desc">under 5 suffer from hidden hunger - nutrient deficiency despite eating enough calories</p>
+  </a>
+</div>
   </div>
 </section>
 
@@ -451,17 +585,14 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
   <h2 class="problems-title">Three Problems. <em>One root.</em></h2>
   <div class="problems-grid">
     <div class="problem-card">
-      <div class="problem-icon"></div>
       <h3>The Soil is Dying</h3>
       <p>What grows in dead soil is not food — it is the shape of food. It looks right. It weighs right. But the nutrition is gone. And what we lose in the soil, we pay for in our bodies.</p>
     </div>
     <div class="problem-card featured">
-      <div class="problem-icon"></div>
       <h3>The Chemicals Don't Stay</h3>
       <p>They seep into groundwater. They rise as vapour. They travel into the air we breathe and the water we drink. Our bodies are keeping score.</p>
     </div>
     <div class="problem-card">
-      <div class="problem-icon"></div>
       <h3>Our Children Inherit This</h3>
       <p>Children developing allergies and hormonal conditions that didn't exist a generation ago. We call it lifestyle disease. But the lifestyle hasn't changed that much. The food has.</p>
     </div>
@@ -473,12 +604,12 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
   <div class="philosophy-grid">
     <div>
       <div class="philosophy-quote">"यथा अन्नं,<br>तथा मन्नः"</div>
-      <p class="philosophy-translation">YATHA ANNA, THATHA MANN — AS IS THE FOOD, SO IS THE MIND</p>
+      <p class="philosophy-translation">YATHA ANNA, THATHA MANN - AS IS THE FOOD, SO IS THE MIND</p>
     </div>
     <div class="philosophy-right">
       <div class="section-label">OUR PHILOSOPHY</div>
-      <p>Food is not just what we eat — it is the balance between all five elements. When Prithvi, Jal, Agni, Vayu, and Akasha are in harmony, that is what nature is truly about.</p>
-      <p>Our ancestors farmed in conversation with nature — not in combat with it. The result was food that healed. Soil that grew richer every season.</p>
+      <p>Food is not just what we eat - it is the balance between all five elements. When Prithvi, Jal, Agni, Vayu, and Akasha are in harmony, that is what nature is truly about.</p>
+      <p>Our ancestors farmed in conversation with nature - not in combat with it. The result was food that healed. Soil that grew richer every season.</p>
       <div class="pill-tags">
         <span class="pill">🌍 Prithvi</span>
         <span class="pill">💧 Jal</span>
@@ -494,42 +625,42 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
 <section id="ourway">
   <div class="ourway-grid">
     <div>
-      <div class="section-label">OUR WAY</div>
+      <div class="section-label">HOW WE GROW</div>
       <h2 class="ourway-headline">Farming the ancient way, for the modern family.</h2>
       <div class="practice-item">
         <div class="practice-icon">🌿</div>
         <div class="practice-text">
           <h4>Indigenous Seeds</h4>
-          <p>Seeds preserved across generations — carrying the memory of thousands of seasons. We grow only what the land already knows.</p>
+          <p>Seeds preserved across generations - carrying the memory of thousands of seasons. We grow only what the land already knows.</p>
         </div>
       </div>
       <div class="practice-item">
         <div class="practice-icon">🐮</div>
         <div class="practice-text">
           <h4>Desi Cow as Pillar</h4>
-          <p>Only gomutra and compost — nothing else. The desi cow is the foundation of everything we grow. No synthetic fertilizer. Ever.</p>
+          <p>Only gomutra and compost - nothing else. The desi cow is the foundation of everything we grow. No synthetic fertilizer. Ever.</p>
         </div>
       </div>
       <div class="practice-item">
         <div class="practice-icon">🌿</div>
         <div class="practice-text">
           <h4>Pest Management, not Killing</h4>
-          <p>We use repellents to manage pests — not kill them. Every creature has its role in the balance we are trying to restore.</p>
+          <p>We use repellents to manage pests - not kill them. Every creature has its role in the balance we are trying to restore.</p>
         </div>
       </div>
       <div class="practice-item">
         <div class="practice-icon">🌾</div>
         <div class="practice-text">
           <h4>Only What the Season Allows</h4>
-          <p>Nothing forced. Nothing artificial. We grow with the season — because that is when the food is most alive.</p>
+          <p>Nothing forced. Nothing artificial. We grow with the season - because that is when the food is most alive.</p>
         </div>
       </div>
     </div>
     <div class="rishi-card">
       <h3>Rishi Krishi</h3>
-      <p>When Prithvi, Jal, Agni, Vayu, and Akasha are in harmony — the soil lives. When the soil lives, the food heals. When the food heals, so do we.</p>
+      <p>When Prithvi, Jal, Agni, Vayu, and Akasha are in harmony - the soil lives. When the soil lives, the food heals. When the food heals, so do we.</p>
       <p>Natural farming teaches that health is not a product to be purchased. It flows naturally when all five elements are in balance.</p>
-      <p>Aarogya Bhoomi is our attempt to restore that balance — one farm at a time.</p>
+      <p>Aarogya Bhoomi is our attempt to restore that balance - one farm at a time.</p>
       <div class="rishi-tags">
         <span class="rishi-tag">Living Soil</span>
         <span class="rishi-tag">Zero Chemicals</span>
@@ -545,16 +676,16 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
   <div class="section-label" style="color:var(--green-light);">LIVING HERITAGE</div>
   <h2 class="seeds-title">Our Indigenous Seed Collection</h2>
   <div class="seeds-strip">
-    <div class="seed-img"><img src="images/seed1.jpg" alt="Seed 1"></div>
-    <div class="seed-img"><img src="images/seed2.jpg" alt="Seed 2"></div>
-    <div class="seed-img"><img src="images/seed3.jpg" alt="Seed 3"></div>
-    <div class="seed-img"><img src="images/seed4.jpg" alt="Seed 4"></div>
-    <div class="seed-img"><img src="images/seed5.jpg" alt="Seed 5"></div>
-    <div class="seed-img"><img src="images/seed6.jpg" alt="Seed 6"></div>
-    <div class="seed-img"><img src="images/seed7.jpg" alt="Seed 7"></div>
-    <div class="seed-img"><img src="images/seed8.jpg" alt="Seed 8"></div>
+    <div class="seed-img"><img src="seed1.jpg" alt="Seed 1"></div>
+    <div class="seed-img"><img src="seed2.jpg" alt="Seed 2"></div>
+    <div class="seed-img"><img src="seed3.jpg" alt="Seed 3"></div>
+    <div class="seed-img"><img src="seed4.jpg" alt="Seed 4"></div>
+    <div class="seed-img"><img src="seed5.jpg" alt="Seed 5"></div>
+    <div class="seed-img"><img src="seed6.jpg" alt="Seed 6"></div>
+    <div class="seed-img"><img src="seed7.jpg" alt="Seed 7"></div>
+    <div class="seed-img"><img src="seed8.jpg" alt="Seed 8"></div>
   </div>
-  <p class="seeds-caption">We preserve and grow over 40 indigenous varieties each season.</p>
+  <p class="seeds-caption">We are attempting to preserve and grow over 500+ indigenous varieties of veggies, fruits, herbs and spices.</p>
 </section>
 
 <!-- ===== SECTION 9: FARMER STORY ===== -->
@@ -563,9 +694,9 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
     <div class="section-label" style="justify-content:center;">A DIFFERENT KIND OF PARTNERSHIP</div>
     <h2 class="farmer-headline">Why does the farmer carry this alone?</h2>
     <div class="farmer-body">
-      <p>Think about the person who grew what you ate today. He was in the field before the sun rose. He watched the sky nervously when the monsoon was late. He took loans to buy seeds — more loans when the harvest didn't cover the last ones.</p>
-      <p>And at the end of all that — he got paid less than what it cost him to grow.</p>
-      <p class="farmer-italic">What if this didn't have to be his burden alone?</p>
+      <p>Think about the person who grew what you ate today. He was in the field before the sun rose. He watched the sky nervously when the monsoon was late. He took loans to buy seeds - more loans when the harvest didn't cover the last ones.</p>
+      <p>And at the end of all that - he got paid less than what it cost him to grow.</p>
+      <h3 class="farmer-italic">What if this didn't have to be his burden alone?</h3>
       <p>What if the people who eat the food also shared the responsibility of growing it? Not as charity. Not as sympathy. <strong>As equals.</strong></p>
     </div>
   </div>
@@ -576,35 +707,41 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
   <div class="cofarmer-card">
     <span class="cofarmer-badge">🌱 ONLY 200 SLOTS AVAILABLE</span>
     <h2 class="cofarmer-title">This is the Co-Farmer Model</h2>
-    <p class="cofarmer-body">You share the real cost of growing honest food — directly, with no middleman, no markup. We farm with full natural practices. Every week, fresh harvest reaches your home. Come to the farm. Watch seeds go into the ground. Harvest with your hands. Let your children touch the soil.</p>
-    <p class="cofarmer-bold">When the harvest is good, we celebrate together. When it isn't — we bear the loss together.</p>
+    <p class="cofarmer-body">You share the real cost of growing honest food - directly, with no middleman, no markup. We farm with full natural practices. Every week, fresh harvest reaches your home. Come to the farm. Watch seeds go into the ground. Harvest with your hands. Let your children touch the soil.</p>
+    <p class="cofarmer-bold">When the harvest is good, we celebrate together. When it isn't - we bear the loss together.</p>
   </div>
-  <p class="cofarmer-footer">We want farming to become a dignified career — chosen with pride, not forced by circumstance. Every family that joins makes the farmer's path a little less lonely. Makes the soil a little more alive.</p>
+  <p class="cofarmer-footer">We want farming to become a dignified career - chosen with pride, not forced by circumstance. Every family that joins makes the farmer's path a little less lonely. Makes the soil a little more alive.</p>
 </section>
 
 <!-- ===== SECTION 11: OUR FARM - MARQUEE ===== -->
 <section id="farm">
   <div class="farm-header">
-    <h2 class="farm-title">Our Farm</h2>
+    <h2 class="farm-title">Our Farm and Activities</h2>
   </div>
   <div class="farm-marquee-wrap">
     <div class="farm-track">
       <!-- Original set -->
-      <div class="farm-img-item"><img src="images/farm1.jpg" alt="Farm"></div>
-      <div class="farm-img-item"><img src="images/farm2.jpg" alt="Farm"></div>
-      <div class="farm-img-item"><img src="images/farm3.jpg" alt="Farm"></div>
-      <div class="farm-img-item"><img src="images/farm4.jpg" alt="Farm"></div>
-      <div class="farm-img-item"><img src="images/farm5.jpg" alt="Farm"></div>
-      <div class="farm-img-item"><img src="images/farm6.jpg" alt="Farm"></div>
-      <div class="farm-img-item"><img src="images/farm7.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm1.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm2.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm3.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm4.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm5.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm6.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm7.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm8.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm9.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm10.jpg" alt="Farm"></div>
       <!-- Duplicate for seamless loop -->
-      <div class="farm-img-item"><img src="images/farm1.jpg" alt="Farm"></div>
-      <div class="farm-img-item"><img src="images/farm2.jpg" alt="Farm"></div>
-      <div class="farm-img-item"><img src="images/farm3.jpg" alt="Farm"></div>
-      <div class="farm-img-item"><img src="images/farm4.jpg" alt="Farm"></div>
-      <div class="farm-img-item"><img src="images/farm5.jpg" alt="Farm"></div>
-      <div class="farm-img-item"><img src="images/farm6.jpg" alt="Farm"></div>
-      <div class="farm-img-item"><img src="images/farm7.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm1.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm2.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm3.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm4.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm5.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm6.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm7.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm8.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm9.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm10.jpg" alt="Farm"></div>
     </div>
   </div>
 </section>
@@ -624,11 +761,11 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
     </thead>
     <tbody>
       <tr><td>PURPOSE OF GROWING</td><td>Speed &amp; quantity</td><td>Nutrition &amp; taste</td></tr>
-      <tr><td>INPUTS USED</td><td>Chemical fertilizers &amp; pesticides — many banned in Europe</td><td>100% natural — gomutra &amp; bio formulations only</td></tr>
-      <tr><td>HOW IT REACHES YOU</td><td>Cold storage, ripening chambers, chemical wax coating</td><td>Harvested and delivered — no storage, no treatment</td></tr>
-      <tr><td>AVAILABILITY</td><td>Same vegetables all year (forced, artificial)</td><td>Seasonal only — naturally grown</td></tr>
+      <tr><td>INPUTS USED</td><td>Chemical fertilizers &amp; pesticides - many banned in Europe</td><td>100% natural - desi cow gomutra with bio formulations only</td></tr>
+      <tr><td>HOW IT REACHES YOU</td><td>Cold storage, ripening chambers, chemical wax coating</td><td>Harvested and delivered - no storage, no treatment</td></tr>
+      <tr><td>AVAILABILITY</td><td>Same vegetables all year (forced, artificial)</td><td>Seasonal only - naturally grown</td></tr>
       <tr><td>YOUR RELATIONSHIP</td><td>Anonymous. You don't know the soil or the farmer.</td><td>You know the farmer. You visit the farm. You trust what you eat.</td></tr>
-      <tr><td>WHAT YOUR CHILD EATS</td><td>Pesticide residues accumulating in small bodies</td><td>Clean, seasonal, alive — the way a child's body was designed</td></tr>
+      <tr><td>WHAT YOUR CHILD EATS</td><td>Pesticide residues accumulating in small bodies</td><td>Clean, seasonal, alive - the way a child's body was designed</td></tr>
       <tr><td>WHO BEARS FARMING RISK</td><td>Farmer alone, under crushing debt pressure</td><td>Shared between co-farmers and the farm</td></tr>
       <tr><td>WHAT YOU'RE REALLY PAYING FOR</td><td>The appearance of freshness</td><td>Real food, honest farming, a future your children can eat from</td></tr>
     </tbody>
@@ -640,11 +777,11 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
   <div class="section-label" style="justify-content:center;">FARM SHARE PLANS</div>
   <h2 class="plans-headline">Choose your depth of connection</h2>
   <div class="plans-intro">
-    <p>Most farmers don't grow food naturally—not because they don't want to, but because they can't afford the risk. Natural farming requires time, patience, and most importantly — a guaranteed buyer for the season.</p>
+    <p>Most farmers don't grow food naturally-not because they don't want to, but because they can't afford the risk. Natural farming requires time, patience, and most importantly - a guaranteed buyer for the season.</p>
     <p class="highlight">Without that assurance, farmers are forced to depend on chemicals for faster, predictable yields.</p>
-    <p class="highlight">At Aarogya Bhoomi, we change that. By committing to a season, you enable farmers to grow food the right way — slow, diverse, and chemical-free.</p>
+    <p class="highlight">At Aarogya Bhoomi, we change that. By committing to a season, you enable farmers to grow food the right way - slow, diverse, and chemical-free.</p>
     <p>You don't just receive vegetables. You witness your food growing, understand the process, and become a co-farmer in the journey.</p>
-    <p>Backed by 50+ natural farming SOPs, this is food you can trust — because you've seen it grow.</p>
+    <p>Backed by 50+ natural farming SOPs, this is food you can trust - because you've seen it grow.</p>
   </div>
   <div class="plans-grid">
     <!-- Soil Starter -->
@@ -668,8 +805,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
       <div class="plan-duration">6 Months · Full Partnership</div>
       <ul class="plan-features">
         <li>All benefits of Soil Starter</li>
-        <li>Save 10% with seasonal commitment</li>
-        <li>Weekly seasonal vegetables &amp; fruits share</li>
+        <li>Save 8% with seasonal commitment</li>
         <li>2 farm visits per month</li>
         <li>Work-from-farm day</li>
         <li>Festival baskets (chemical-free celebrations)</li>
@@ -684,7 +820,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
       <div class="plan-duration">Yearly · Extended</div>
       <ul class="plan-features">
         <li>Everything in Root Sharer</li>
-        <li>1 month free</li>
+        <li>Save 10% with yearly commitment</li>
         <li>Additional herbs, flowers &amp; seasonal gifts</li>
         <li>Farm stay experience</li>
         <li>Name on Co-Farmer Wall</li>
@@ -707,7 +843,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
       <p class="test-role">Co-Farmer, Gurgaon · 8 months</p>
     </div>
     <div class="test-item">
-      <p class="test-quote">"After years of knowing our food was wrong but not knowing what to do — this felt like finally doing something. The tomatoes alone changed my mind about everything."</p>
+      <p class="test-quote">"After years of knowing our food was wrong but not knowing what to do - this felt like finally doing something. The tomatoes alone changed my mind about everything."</p>
       <p class="test-name">Rohit &amp; Kavya Mehta</p>
       <p class="test-role">Co-Farmers, Noida · 1 year</p>
     </div>
@@ -722,7 +858,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
 <!-- ===== SECTION 15: CTA BANNER ===== -->
 <section id="cta">
   <h2 class="cta-headline">The poison stops<br>with your generation.</h2>
-  <p class="cta-sub">If you're the sensitive one — the one who actually wants to do something — this is your invitation. Join families who chose responsibility over complaint.</p>
+  <p class="cta-sub">If you're the sensitive one - the one who actually wants to do something - this is your invitation. Join families who chose responsibility over complaint.</p>
   <a href="#plans" class="btn-cta-outline">COMPARE PLANS</a>
 </section>
 
@@ -737,7 +873,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
 <!-- ===== SECTION 17: HOW FOOD IS GROWN ===== -->
 <section id="howgrown">
   <div class="section-label" style="color:var(--green-light);">FROM THE SOIL TO YOUR TABLE</div>
-  <h2 class="howgrown-title">How your food is grown — naturally.</h2>
+  <h2 class="howgrown-title">How your food is grown - naturally.</h2>
   <p class="howgrown-sub">No shortcuts. No storage. No pretending. Just the honest journey from seed to plate.</p>
   <div class="howgrown-grid">
     <div class="howgrown-item">
@@ -748,7 +884,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
     <div class="howgrown-item featured">
       <div class="icon">🌍</div>
       <h3>Soil Preparation</h3>
-      <p>Gomutra, compost, and deep care. We feed the soil — not the plant. Living soil does the rest.</p>
+      <p>Gomutra, compost, and deep care. We feed the soil - not the plant. Living soil does the rest.</p>
     </div>
     <div class="howgrown-item">
       <div class="icon">🌾</div>
@@ -758,7 +894,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
     <div class="howgrown-item">
       <div class="icon">🚚</div>
       <h3>Fresh to Your Door</h3>
-      <p>Harvested and delivered — no cold storage, no wax, no ripening chambers.</p>
+      <p>Harvested and delivered - no cold storage, no wax, no ripening chambers.</p>
     </div>
   </div>
 </section>
@@ -767,12 +903,12 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
 <section id="team">
   <div class="section-label">MEET THE VISIONARIES</div>
   <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;margin-bottom:6px;">The Soil Keepers</h2>
-  <p style="font-size:1rem;color:#5a3e28;font-style:italic;">From living soil to healthy food — naturally.</p>
+  <p style="font-size:1rem;color:#5a3e28;font-style:italic;">From living soil to healthy food - naturally.</p>
   <div class="team-grid">
-    <div class="team-card"><img src="images/team1.jpg" alt="Meet the Visionaries"></div>
-    <div class="team-card"><img src="images/team2.jpg" alt="Sanchit Aggarwal"></div>
-    <div class="team-card"><img src="images/team3.jpg" alt="Arunima Sharma"></div>
-    <div class="team-card"><img src="images/team4.jpg" alt="Tripti Tayal"></div>
+    <div class="team-card"><img src="team1.jpg" alt="Meet the Visionaries"></div>
+    <div class="team-card"><img src="team2.jpg" alt="Sanchit Aggarwal"></div>
+    <div class="team-card"><img src="team3.jpg" alt="Arunima Sharma"></div>
+    <div class="team-card"><img src="team4.jpg" alt="Tripti Tayal"></div>
   </div>
 </section>
 
@@ -788,20 +924,27 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
     </div>
   </div>
 </section>
-
 <!-- ===== SECTION 20: FREE RESOURCE ===== -->
 <section id="resource">
   <div class="resource-grid">
+    
+    <!-- LEFT CONTENT -->
     <div>
       <div class="section-label" style="color:var(--green-light);">FREE RESOURCE</div>
       <h2 class="resource-title">Grow Your Own Food<br>at Your Balcony</h2>
-      <p class="resource-sub">A practical guide to starting your first kitchen garden — even if you only have a window sill. Learn soil preparation, seed selection, and natural care methods you can start this weekend.</p>
-      <a href="https://forms.gle/CcwmLDvwbN7JA8e49" target="_blank" class="btn-gold">DOWNLOAD FREE GUIDE →</a>
+      <p class="resource-sub">
+        A practical guide to starting your first kitchen garden — even if you only have a window sill. 
+        Learn soil preparation, seed selection, and natural care methods you can start this weekend.
+      </p>
     </div>
-    <div class="resource-card">
-      <div class="icon">🌿</div>
-      <p>Free Balcony Farming Guide<br>by Aarogya Bhoomi</p>
+
+    <!-- RIGHT CTA (Moved Here) -->
+    <div class="resource-cta">
+      <a href="https://forms.gle/4uY3KwMACXqEJdZr6" target="_blank" class="btn-gold big-btn">
+        DOWNLOAD FREE GUIDE →
+      </a>
     </div>
+
   </div>
 </section>
 
@@ -811,15 +954,16 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
   <h2 class="faq-headline">Everything you want to know before you join.</h2>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">What exactly is the Co-Farmer model? <span class="faq-icon">+</span></button>
-    <div class="faq-a">Instead of buying vegetables as a one-time transaction, you commit to a season alongside the farmer. You receive a weekly harvest box, farm updates, and access to visit the farm — while the farmer has the security to grow without worrying about market prices.</div>
+    <div class="faq-a">Instead of buying vegetables as a one-time transaction, you commit to a season alongside the farmer. You receive a weekly harvest box, farm updates, and access to visit the farm - while the farmer has the security to grow without worrying about market prices.</div>
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">Where is the farm located? <span class="faq-icon">+</span></button>
-    <div class="faq-a">Our farm is located in Dobheta, Sonipat, Haryana — about 45 minutes from Delhi. Co-farmers are welcome to visit on scheduled farm days.</div>
+    <div class="faq-a">We have farms in Dobheta, Sonipat and in Sohna, Gurgaon.
+      We invite our co-farmers to visit during scheduled farm days and experience it firsthand.</div>
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">What do I receive in the weekly box? <span class="faq-icon">+</span></button>
-    <div class="faq-a">Your weekly harvest box contains whatever is freshly harvested that week — seasonal vegetables, greens, and sometimes herbs. The contents change with the season, and that is intentional.</div>
+    <div class="faq-a">Your weekly harvest box contains whatever is freshly harvested that week - seasonal vegetables, greens, and sometimes herbs. The contents change with the season, and that is intentional.</div>
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">Do you deliver to my area? <span class="faq-icon">+</span></button>
@@ -827,11 +971,13 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">Are the vegetables certified organic? <span class="faq-icon">+</span></button>
-    <div class="faq-a">We farm using Rishi Krishi principles which go beyond organic certification — no synthetic inputs of any kind, indigenous seeds, and desi cow as the foundation. We invite you to visit the farm rather than rely on a certificate.</div>
+    <div class="faq-a">We farm using Rishi Krishi principles which go beyond organic certification - no synthetic inputs of any kind, indigenous seeds, and desi cow as the foundation. We invite you to visit the farm rather than rely on a certificate.</div>
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">Can I pause or cancel my plan? <span class="faq-icon">+</span></button>
-    <div class="faq-a">Plans can be paused for up to two weeks per season for travel or other reasons. Please contact us at least 5 days in advance.</div>
+    <div class="faq-a">As a co-farmer, you are part of the farming journey for the entire season. The crops continue to grow and be harvested, even if you’re away for a while.
+
+In such cases, you can have your share delivered to a neighbour, friend, or loved one. Since this model ensures stable support for our farmers, plans are not paused or refunded once the season begins.</div>
   </div>
 </section>
 
@@ -840,11 +986,11 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
   <div class="footer-grid">
     <div>
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-        <img src="images/logo.png" alt="Logo" style="height:40px;width:40px;object-fit:cover;border-radius:50%;border:2px solid var(--green-light);">
+        <img src="logo.png" alt="Logo" style="height:40px;width:40px;object-fit:cover;border-radius:50%;border:2px solid var(--green-light);">
         <span class="footer-logo-text">Aarogya<span>Bhoomi</span></span>
       </div>
       <p class="footer-tagline">A brand of Thynaa Healthy Naturally Private Limited</p>
-      <p class="footer-desc">Where we heal the soil with love and care — so it can heal all of us. One farm, one family, one season at a time.</p>
+      <p class="footer-desc">Where we heal the soil with love and care - so it can heal all of us. One farm, one family, one season at a time.</p>
     </div>
     <div class="footer-col">
       <h4>EXPLORE</h4>
@@ -870,7 +1016,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
         <li><a href="#plans">Become a Co-Farmer</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="https://docs.google.com/document/d/1U4Rm0BgFMNKtFZZdkzu-1YzaP3cltAeWkIKZfdtlkFw/edit?usp=sharing" target="_blank">Privacy Policy</a></li>
-        <li><a href="#connect">Contact Us</a></li>
+        <li><a href="#join">Contact Us</a></li>
       </ul>
     </div>
   </div>
