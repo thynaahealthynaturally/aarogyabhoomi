@@ -197,6 +197,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--cream);bor
 
 /* ============ SECTION 12: COMPARISON TABLE ============ */
 #compare{padding:80px 80px;background:var(--cream);}
+.compare-table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.compare-table{min-width:680px;}
 .compare-headline{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:900;margin-bottom:8px;}
 .compare-sub{font-size:1rem;color:#5a3e28;margin-bottom:40px;}
 .compare-table{width:100%;border-collapse:collapse;box-shadow:0 2px 20px rgba(44,31,14,0.08);}
@@ -215,32 +217,288 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--cream);bor
 .compare-table td:nth-child(2){color:#8b2500;font-weight:500;}
 .compare-table td:nth-child(3){color:#2e5438;font-weight:500;}
 
+
 /* ============ SECTION 13: PLANS ============ */
-#plans{padding:80px 80px;background:var(--cream);}
-.plans-headline{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:900;text-align:center;margin-bottom:30px;}
-.plans-intro{max-width:680px;margin:0 auto 50px;}
-.plans-intro p{font-size:0.95rem;line-height:1.8;color:var(--med-brown);margin-bottom:16px;}
-.plans-intro p.highlight{font-size:1.05rem;font-weight:700;color:var(--dark-brown);line-height:1.7;}
-.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:920px;margin:0 auto;}
-.plan-card{padding:32px 26px;border:1px solid rgba(44,31,14,0.15);background:var(--cream);}
-.plan-card.featured{background:#2c1f0e;border-color:transparent;}
-.plan-badge{display:inline-block;background:var(--green);color:#fff;padding:5px 12px;font-size:0.68rem;letter-spacing:0.1em;font-weight:700;margin-bottom:14px;}
-.plan-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:800;margin-bottom:4px;}
-.plan-card.featured .plan-name{color:var(--gold);}
-.plan-subtitle{font-size:0.8rem;font-style:italic;color:#5a3e28;margin-bottom:6px;}
-.plan-card.featured .plan-subtitle{color:rgba(255,255,255,0.6);}
-.plan-duration{font-size:0.78rem;color:var(--terracotta);margin-bottom:18px;font-weight:600;}
-.plan-card.featured .plan-duration{color:rgba(255,255,255,0.55);}
-.plan-features{list-style:none;margin-bottom:24px;}
-.plan-features li{font-size:0.84rem;padding:7px 0 7px 20px;position:relative;line-height:1.5;color:#3d2b1a;border-bottom:1px solid rgba(44,31,14,0.07);}
-.plan-card.featured .plan-features li{color:rgba(255,255,255,0.82);border-bottom-color:rgba(255,255,255,0.08);}
-.plan-features li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700;}
-.plan-card.featured .plan-features li::before{color:var(--green-light);}
-.plan-btn{display:block;text-align:center;padding:13px;font-size:0.76rem;letter-spacing:0.12em;font-weight:700;text-decoration:none;width:100%;transition:all 0.2s;}
-.plan-btn-outline{border:2px solid var(--green);color:var(--green);background:transparent;}
-.plan-btn-outline:hover{background:var(--green);color:#fff;}
-.plan-btn-filled{background:var(--green);color:#fff;}
-.plan-btn-filled:hover{background:var(--green-dark);}
+
+#plans {
+    padding: 80px 50px;
+    background: var(--cream);
+}
+
+.plans-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.plans-intro {
+    max-width: 680px;
+    margin: 0 auto 50px;
+}
+
+.plans-intro p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--med-brown);
+    margin-bottom: 16px;
+}
+
+.plans-intro p.highlight {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark-brown);
+    line-height: 1.7;
+}
+
+/* Four-column desktop layout */
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 1500px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+/* Individual membership cards */
+.plan-card {
+    padding: 28px 20px;
+    border: 1px solid rgba(44,31,14,0.15);
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(44,31,14,0.10);
+}
+
+/* Featured Fasal card */
+.plan-card.featured {
+    background: #2c1f0e;
+    border: 2px solid var(--gold);
+    transform: translateY(-4px);
+}
+
+.plan-card.featured .plan-name {
+    color: var(--gold);
+}
+
+.plan-badge {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    padding: 5px 12px;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    margin-bottom: 14px;
+    align-self: flex-start;
+}
+
+.plan-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.45rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: var(--dark-brown);
+}
+
+.plan-subtitle {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: #5a3e28;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.plan-card.featured .plan-subtitle {
+    color: rgba(255,255,255,0.82);
+}
+
+.plan-duration {
+    font-size: 0.78rem;
+    color: var(--terracotta);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.plan-card.featured .plan-duration {
+    color: #f0d9a8;
+}
+
+/* Price */
+.plan-price {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-weight: 800;
+    color: var(--dark-brown);
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.plan-card.featured .plan-price {
+    color: var(--gold);
+}
+
+/* Features */
+.plan-features {
+    list-style: none;
+    margin: 12px 0 24px;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.plan-features li {
+    font-size: 0.79rem;
+    padding: 8px 0 8px 20px;
+    position: relative;
+    line-height: 1.5;
+    color: #3d2b1a;
+    border-bottom: 1px solid rgba(44,31,14,0.07);
+}
+
+.plan-card.featured .plan-features li {
+    color: rgba(255,255,255,0.9);
+    border-bottom-color: rgba(255,255,255,0.12);
+}
+
+.plan-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 700;
+}
+
+.plan-card.featured .plan-features li::before {
+    color: var(--green-light);
+}
+
+/* Pricing breakdown */
+.plan-total {
+    padding: 14px 12px;
+    background: rgba(44,31,14,0.05);
+    margin-bottom: 18px;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: var(--dark-brown);
+}
+
+.plan-total strong,
+.plan-total span {
+    display: block;
+}
+
+.plan-card.featured .plan-total {
+    background: rgba(255,255,255,0.09);
+    color: #fff;
+}
+
+.plan-card.featured .plan-total strong {
+    color: var(--gold);
+}
+
+/* Buttons */
+.plan-btn {
+    display: block;
+    text-align: center;
+    padding: 13px 8px;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    text-decoration: none;
+    width: 100%;
+    transition: all 0.2s;
+    margin-top: auto;
+}
+
+.plan-btn-outline {
+    border: 2px solid var(--green);
+    color: var(--green);
+    background: transparent;
+}
+
+.plan-btn-outline:hover {
+    background: var(--green);
+    color: #fff;
+}
+
+.plan-btn-filled {
+    background: var(--green);
+    color: #fff;
+}
+
+.plan-btn-filled:hover {
+    background: var(--green-dark);
+}
+
+/* Plus plan discount label */
+.plan-discount {
+    display: inline-block;
+    background: #e7f0df;
+    color: #315c32;
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 5px 9px;
+    margin-bottom: 12px;
+    letter-spacing: 0.04em;
+}
+
+/* Tablet: two columns */
+@media (max-width: 1100px) {
+    #plans {
+        padding: 65px 30px;
+    }
+
+    .plans-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 760px;
+        gap: 20px;
+    }
+
+    .plan-card {
+        padding: 28px 24px;
+    }
+}
+
+/* Mobile: single column */
+@media (max-width: 600px) {
+    #plans {
+        padding: 50px 18px;
+    }
+
+    .plans-headline {
+        font-size: 2.1rem;
+    }
+
+    .plans-intro {
+        margin-bottom: 30px;
+    }
+
+    .plans-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .plan-card {
+        padding: 26px 22px;
+    }
+
+    .plan-name {
+        font-size: 1.55rem;
+    }
+
+    .plan-price {
+        font-size: 1.9rem;
+    }
+}
+
 
 /* ============ SECTION 14: TESTIMONIALS ============ */
 #testimonials{padding:80px 80px;background:var(--cream);border-top:1px solid rgba(44,31,14,0.08);}
@@ -445,6 +703,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
   .seeds-strip{grid-template-columns:repeat(4,1fr);}
   .team-grid{grid-template-columns:1fr 1fr;}
   .slide-content{left:24px;bottom:50px;max-width:88%;}
+  .compare-table-wrap{margin-right:-4px;}
   .compare-table{font-size:0.78rem;}
   .compare-table th,.compare-table td{padding:10px 10px;}
   .connect-box{padding:30px 20px;}
@@ -534,8 +793,8 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
 
 <!-- ===== SECTION 2: ORANGE BANNER ===== -->
 <section id="banner">
-  <h2 class="banner-headline">No Chemicals.<br>No Shortcuts.<br><span class="green">Natural Food.</span></h2>
-  <p class="banner-sub">Grown with natural practices in living soil with indigenous seeds. Freshly harvested and delivered to your door, weekly.</p>
+  <h2 class="banner-headline">No Synthetic Shortcuts.<br>Seasonal Growing.<br><span class="green">Natural Farming.</span></h2>
+  <p class="banner-sub">Grown with indigenous seeds and natural farming practices in living soil. Freshly harvested for members, with optional weekly home delivery.</p>
 </section>
 
 <!-- ===== SECTION 3: ABOUT ===== -->
@@ -543,13 +802,12 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
   <div class="section-label">A QUESTION WORTH ASKING</div>
   <h2 class="about-headline">Do you remember the mango that actually tasted like a mango?</h2>
   <div class="about-body">
-    <p>Your grandparents might have. When food made you feel STRONG - not just FULL. That food came from SOIL that was ALIVE.</p>
-    <p>Now think about what you ate today. Do you know which soil it came from? How many days in cold storage - waxed, treated, made to look fresh?</p>
-    <div class="blockquote"><p>We have confused shine with health.</p></div>
-    <p>Today vegetables look perfect. A full plate which feels like nourishment. Yet they are delivering slow poison to our families bodies with every bite.</p>
-    <p>The average Indian vegetable today travels through cold storage, ripening chambers, and chemical wax before it reaches your hand. The pesticide residue on what you call "fresh vegetables" would fail safety standards in many countries.</p>
-    <p><strong>This is not fear-mongering.</strong> This is what happens when a generation decided that <strong>cheap and convenient</strong> was the same as good.</p>
-    <p>The most dangerous thing? It looks completely normal.</p>
+    <p>Your grandparents might remember food grown close to home, harvested in season and connected to the soil it came from.</p>
+    <p>Today, much of our food travels through long supply chains before reaching our kitchens. It can be difficult to know where it was grown, which practices were followed or how it was handled after harvest.</p>
+    <div class="blockquote"><p>We have confused appearance with the whole story of food.</p></div>
+    <p>At Aarogya Bhoomi, we want families to reconnect with the people, soil and seasons behind what they eat.</p>
+    <p>Rather than making broad claims about all market produce, we invite you to visit our farm, understand our growing practices and follow the journey from seed to harvest.</p>
+    <p><strong>Our belief is simple:</strong> food deserves care, transparency and a closer relationship between the people who grow it and the people who eat it.</p>
   </div>
 </section>
 
@@ -557,42 +815,42 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
 <section id="stats">
   <div class="stats-grid">
     <div class="stat-item">
-  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.0" target="_blank" class="stat-link-block">
+  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="stat-link-block">
     <div class="stat-num">50%+</div>
     <p class="stat-bold">of India's soil</p>
-    <p class="stat-desc">deficient in one or more critical micronutrients - a crisis driven by decades of intensive chemical farming</p>
+    <p class="stat-desc">reported deficiency in one or more critical micronutrients. See the linked source for context.</p>
   </a>
 </div>
     <div class="stat-item">
-  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.w9hluz1jmqlg" target="_blank" class="stat-link-block">
+  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.w9hluz1jmqlg" target="_blank" rel="noopener noreferrer" class="stat-link-block">
     <div class="stat-num">94%</div>
     <p class="stat-bold">Delhi's NCR entire agricultural belt</p>
     <p class="stat-desc">is carbon deficient</p>
   </a>
 </div>
     <div class="stat-item">
-  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.w9hluz1jmqlg" target="_blank" class="stat-link-block">
+  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.w9hluz1jmqlg" target="_blank" rel="noopener noreferrer" class="stat-link-block">
     <div class="stat-num">89%</div>
     <p class="stat-bold">of India's soils are nitrogen-deficient</p>
     <p class="stat-desc">directly caused by organic carbon collapse</p>
   </a>
 </div>
     <div class="stat-item">
-  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.w9hluz1jmqlg" target="_blank" class="stat-link-block">
+  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.w9hluz1jmqlg" target="_blank" rel="noopener noreferrer" class="stat-link-block">
     <div class="stat-num">0.54%</div>
     <p class="stat-bold">average soil carbon in India</p>
-    <p class="stat-desc">less than half the 1-1.5% minimum needed for healthy, nutrient-rich food production - driven by decades of chemical farming</p>
+    <p class="stat-desc">a soil-health indicator cited in the linked reference. Soil conditions vary by region.</p>
   </a>
 </div>
 <div class="stat-item">
-  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.71gcc62760l8" target="_blank" class="stat-link-block">
+  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.71gcc62760l8" target="_blank" rel="noopener noreferrer" class="stat-link-block">
     <div class="stat-num">2×</div>
     <p class="stat-bold">more pesticide residue</p>
     <p class="stat-desc">incidence found in Indian produce in just 5 years</p>
   </a>
 </div>
     <div class="stat-item">
-  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.cepxxj23qaq6" target="_blank" class="stat-link-block">
+  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.cepxxj23qaq6" target="_blank" rel="noopener noreferrer" class="stat-link-block">
     <div class="stat-num">1 in 3</div>
     <p class="stat-bold">Indian children</p>
     <p class="stat-desc">under 5 suffer from hidden hunger - nutrient deficiency despite eating enough calories</p>
@@ -609,12 +867,12 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
       <p>What grows in dead soil is not food — it is the shape of food. It looks right. It weighs right. But the nutrition is gone. And what we lose in the soil, we pay for in our bodies.</p>
     </div>
     <div class="problem-card featured">
-      <h3>The Chemicals Don't Stay</h3>
-      <p>They seep into groundwater. They rise as vapour. They travel into the air we breathe and the water we drink. Our bodies are keeping score.</p>
+      <h3>Soil and Water Need Care</h3>
+      <p>Farming choices can affect soil structure, water quality and biodiversity. We focus on practices that care for the living systems our food depends on.</p>
     </div>
     <div class="problem-card">
-      <h3>Our Children Inherit This</h3>
-      <p>Children developing allergies and hormonal conditions that didn't exist a generation ago. We call it lifestyle disease. But the lifestyle hasn't changed that much. The food has.</p>
+      <h3>Our Children Inherit Our Choices</h3>
+      <p>The way we grow food shapes the soil and environment future generations depend on. We want children to learn where food comes from and why caring for nature matters.</p>
     </div>
   </div>
 </section>
@@ -651,21 +909,21 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
         <div class="practice-icon">🌿</div>
         <div class="practice-text">
           <h4>Indigenous Seeds</h4>
-          <p>Seeds preserved across generations - carrying the memory of thousands of seasons. We grow only what the land already knows.</p>
+          <p>We select indigenous and open-pollinated seeds suited to local conditions, and work to preserve traditional varieties through cultivation and seed saving.</p>
         </div>
       </div>
       <div class="practice-item">
         <div class="practice-icon">🐮</div>
         <div class="practice-text">
           <h4>Desi Cow as Pillar</h4>
-          <p>Only gomutra and compost - nothing else. The desi cow is the foundation of everything we grow. No synthetic fertilizer. Ever.</p>
+          <p>We use compost, cow-based preparations and other natural farm formulations as part of our soil-care practices. We avoid synthetic fertilisers.</p>
         </div>
       </div>
       <div class="practice-item">
         <div class="practice-icon">🌿</div>
         <div class="practice-text">
           <h4>Pest Management, not Killing</h4>
-          <p>We use repellents to manage pests - not kill them. Every creature has its role in the balance we are trying to restore.</p>
+          <p>We prioritise preventive and ecological pest-management practices, including natural formulations and habitat-based approaches, while respecting the role of biodiversity on the farm.</p>
         </div>
       </div>
       <div class="practice-item">
@@ -683,7 +941,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
       <p>Aarogya Bhoomi is our attempt to restore that balance - one farm at a time.</p>
       <div class="rishi-tags">
         <span class="rishi-tag">Living Soil</span>
-        <span class="rishi-tag">Zero Chemicals</span>
+        <span class="rishi-tag">Natural Inputs</span>
         <span class="rishi-tag">Seasonal Only</span>
         <span class="rishi-tag">Farmer Dignity</span>
       </div>
@@ -705,7 +963,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
     <div class="seed-img"><img src="seed7.jpg" alt="Seed 7"></div>
     <div class="seed-img"><img src="seed8.jpg" alt="Seed 8"></div>
   </div>
-  <p class="seeds-caption">We are attempting to preserve and grow over 500+ indigenous varieties of veggies, fruits, herbs and spices.</p>
+  <p class="seeds-caption">We are working to preserve and grow a diverse collection of indigenous vegetables, fruits, herbs and spices.</p>
 </section>
 
 <!-- ===== SECTION 9: FARMER STORY ===== -->
@@ -725,9 +983,9 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
 <!-- ===== SECTION 10: CO-FARMER MODEL ===== -->
 <section id="cofarmer">
   <div class="cofarmer-card">
-    <span class="cofarmer-badge">🌱 ONLY 200 SLOTS AVAILABLE</span>
+    <span class="cofarmer-badge">🌱 ONLY 20 FOUNDING FAMILY MEMBERSHIPS</span>
     <h2 class="cofarmer-title">This is the Co-Farmer Model</h2>
-    <p class="cofarmer-body">You share the real cost of growing honest food - directly, with no middleman, no markup. We farm with full natural practices. Every week, fresh harvest reaches your home. Come to the farm. Watch seeds go into the ground. Harvest with your hands. Let your children touch the soil.</p>
+    <p class="cofarmer-body">You share the cost of growing food through a dedicated family plot. Our farm team tends the land using natural farming practices. Visit the farm, watch seeds go into the ground, take part in harvesting and let your children experience the soil. Produce can be collected at the farm; optional weekly home delivery is available at an additional charge.</p>
     <p class="cofarmer-bold">When the harvest is good, we celebrate together. When it isn't - we bear the loss together.</p>
   </div>
   <p class="cofarmer-footer">We want farming to become a dignified career - chosen with pride, not forced by circumstance. Every family that joins makes the farmer's path a little less lonely. Makes the soil a little more alive.</p>
@@ -770,7 +1028,8 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
 <section id="compare">
   <div class="section-label">HONEST COMPARISON</div>
   <h2 class="compare-headline">Market vegetables vs.<br>Aarogya Bhoomi</h2>
-  <p class="compare-sub">What you're actually bringing home.</p>
+  <p class="compare-sub">A comparison of the relationship and growing practices we offer. Practices vary across market suppliers; this is not a claim about every grower or retailer.</p>
+  <div class="compare-table-wrap">
   <table class="compare-table">
     <thead>
       <tr>
@@ -781,76 +1040,161 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
     </thead>
     <tbody>
       <tr><td>PURPOSE OF GROWING</td><td>Speed &amp; quantity</td><td>Nutrition &amp; taste</td></tr>
-      <tr><td>INPUTS USED</td><td>Chemical fertilizers &amp; pesticides - many banned in Europe</td><td>100% natural - desi cow gomutra with bio formulations only</td></tr>
-      <tr><td>HOW IT REACHES YOU</td><td>Cold storage, ripening chambers, chemical wax coating</td><td>Harvested and delivered - no storage, no treatment</td></tr>
+      <tr><td>INPUTS USED</td><td>Chemical fertilizers &amp; pesticides - many banned in Europe</td><td>Natural farming inputs and practices, as described in our farm updates</td></tr>
+      <tr><td>HOW IT REACHES YOU</td><td>Handling and storage practices vary across suppliers</td><td>Harvested for members; collect at the farm or choose optional paid delivery</td></tr>
       <tr><td>AVAILABILITY</td><td>Same vegetables all year (forced, artificial)</td><td>Seasonal only - naturally grown</td></tr>
       <tr><td>YOUR RELATIONSHIP</td><td>Anonymous. You don't know the soil or the farmer.</td><td>You know the farmer. You visit the farm. You trust what you eat.</td></tr>
-      <tr><td>WHAT YOUR CHILD EATS</td><td>Pesticide residues accumulating in small bodies</td><td>Clean, seasonal, alive - the way a child's body was designed</td></tr>
+      <tr><td>WHAT YOUR CHILD LEARNS</td><td>Food often arrives without a direct connection to its source</td><td>Children can see how food is grown and learn about soil, seasons and farming</td></tr>
       <tr><td>WHO BEARS FARMING RISK</td><td>Farmer alone, under crushing debt pressure</td><td>Shared between co-farmers and the farm</td></tr>
       <tr><td>WHAT YOU'RE REALLY PAYING FOR</td><td>The appearance of freshness</td><td>Real food, honest farming, a future your children can eat from</td></tr>
     </tbody>
   </table>
+  </div>
 </section>
 
 <!-- ===== SECTION 13: PLANS ===== -->
 <section id="plans">
-  <div class="section-label" style="justify-content:center;">FARM SHARE PLANS</div>
+  <div class="section-label" style="justify-content:center;">Co-farmer Plans</div>
   <h2 class="plans-headline">Choose your depth of connection</h2>
   <div class="plans-intro">
+     <h2>A Dedicated Family Plot. Seasonal Food. A Connection with Nature.</h2>
+    <p>
+      Give your family the joy of growing, nurturing and harvesting
+      their own food. Become a co-farmer at Aarogya Bhoomi and
+      experience the beauty of natural farming, one season at a time.
+    </p>
     <p>Most farmers don't grow food naturally-not because they don't want to, but because they can't afford the risk. Natural farming requires time, patience, and most importantly - a guaranteed buyer for the season.</p>
     <p class="highlight">Without that assurance, farmers are forced to depend on chemicals for faster, predictable yields.</p>
-    <p class="highlight">At Aarogya Bhoomi, we change that. By committing to a season, you enable farmers to grow food the right way - slow, diverse, and chemical-free.</p>
+    <p class="highlight">At Aarogya Bhoomi, your seasonal commitment helps support a more planned relationship between the farm and the families who participate in it.</p>
     <p>You don't just receive vegetables. You witness your food growing, understand the process, and become a co-farmer in the journey.</p>
-    <p>Backed by 50+ natural farming SOPs, this is food you can trust - because you've seen it grow.</p>
+    <p class="highlight">Harvest quantities and varieties are seasonal and indicative, not guaranteed. Weekly home delivery is optional and charged separately at ₹250 per week.</p>
+    <p>We share our farming practices and updates so you can understand how your family's food is grown.</p>
   </div>
+  
+
+
+
+<section class="membership-section" id="memberships">
+
   <div class="plans-grid">
-    <!-- Soil Starter -->
+
+    <!-- BEEJ -->
     <div class="plan-card">
-      <div class="plan-name">Soil Starter</div>
-      <div class="plan-subtitle">A perfect way to begin your journey into real food.</div>
-      <div class="plan-duration">3 Months · Trial</div>
+      <div class="plan-name">Beej</div>
+      <div class="plan-subtitle">A beautiful beginning to your family's farming journey.</div>
+      <div class="plan-duration">3 Months · 50 Yard Plot</div>
+      <div class="plan-price">₹13,500</div>
+      <div class="plan-subtitle">
+        Ideal for 2–3 family members
+      </div>
       <ul class="plan-features">
-        <li>Seasonal commitment (supports one full crop cycle)</li>
-        <li>Weekly seasonal vegetables &amp; fruits (5–8 kg)</li>
-        <li>Good for a family of 4</li>
-        <li>Monthly farm visit</li>
+        <li>50-yard dedicated family plot</li>
+        <li>Natural farming guidance</li>
+        <li>Seasonal vegetables from your plot</li>
+        <li>Share of community plantation produce</li>
+        <li>Family farm days and activities</li>
+        <li>Members' WhatsApp community</li>
       </ul>
-      <a href="https://pages.razorpay.com/pl_SFa3eZB6lk0nsh/view" target="_blank" class="plan-btn plan-btn-outline">JOIN THIS PLAN</a>
+      <div class="plan-total">
+        <strong>Membership: ₹12,000</strong>
+        <span>Setup fee: ₹1,500</span>
+        <span>Total payable: ₹13,500</span>
+      </div>
+      <a href="https://pages.razorpay.com/Beej" class="plan-btn plan-btn-outline">
+        JOIN BEEJ
+      </a>
     </div>
-    <!-- Root Sharer -->
+
+    <!-- BEEJ PLUS -->
+    <div class="plan-card">
+      <div class="plan-name">Beej Plus</div>
+      <div class="plan-subtitle">Stay longer and make farming part of your family routine.</div>
+      <div class="plan-duration">6 Months · 50 Yard Plot</div>
+      <div class="plan-price">₹22,800</div>
+      <div class="plan-subtitle">
+        Ideal for 2–3 family members
+      </div>
+      <ul class="plan-features">
+        <li>50-yard dedicated family plot</li>
+        <li>Natural farming guidance</li>
+        <li>Seasonal vegetables from your plot</li>
+        <li>Share of community plantation produce</li>
+        <li>Family farm days and activities</li>
+        <li>Members' WhatsApp community</li>
+        <li>Plot setup fee completely waived</li>
+        <li>5% discount on the six-month membership</li>
+      </ul>
+      <div class="plan-total">
+        <strong>Original price: ₹24,000</strong>
+        <span>5% discount: ₹1,200</span>
+        <span>Total payable: ₹22,800</span>
+      </div>
+      <a href="https://rzp.io/rzp/Beejplus" class="plan-btn plan-btn-outline">
+        JOIN BEEJ PLUS
+      </a>
+    </div>
+
+    <!-- FASAL -->
+    <div class="plan-card">
+      <div class="plan-name">Fasal</div>
+      <div class="plan-subtitle">More space for your family to grow and harvest together.</div>
+      <div class="plan-duration">3 Months · 100 Yard Plot</div>
+      <div class="plan-price">₹21,500</div>
+      <div class="plan-subtitle">
+        Ideal for 4–5 family members
+      </div>
+      <ul class="plan-features">
+        <li>100-yard dedicated family plot</li>
+        <li>Natural farming guidance</li>
+        <li>Seasonal vegetables from your plot</li>
+        <li>Share of community plantation produce</li>
+        <li>Family farm days and activities</li>
+        <li>Members' WhatsApp community</li>
+      </ul>
+      <div class="plan-total">
+        <strong>Membership: ₹19,500</strong>
+        <span>Setup fee: ₹2,000</span>
+        <span>Total payable: ₹21,500</span>
+      </div>
+      <a href="https://pages.razorpay.com/Fasal" class="plan-btn plan-btn-filled">
+        JOIN FASAL
+      </a>
+    </div>
+
+    <!-- FASAL PLUS -->
     <div class="plan-card featured">
-      <span class="plan-badge">MOST POPULAR</span>
-      <div class="plan-name">Root Sharer</div>
-      <div class="plan-subtitle">Your food. Your farm. Your commitment.</div>
-      <div class="plan-duration">6 Months · Full Partnership</div>
+      <span class="plan-badge">POPULAR CHOICE</span>
+      <div class="plan-name">Fasal Plus</div>
+      <div class="plan-subtitle">Six months of a richer farm experience for your family.</div>
+      <div class="plan-duration">6 Months · 100 Yard Plot</div>
+      <div class="plan-price">₹35,100</div>
+      <div class="plan-subtitle">
+        Ideal for 4–5 family members
+      </div>
       <ul class="plan-features">
-        <li>All benefits of Soil Starter</li>
-        <li>Save 8% with seasonal commitment</li>
-        <li>2 farm visits per month</li>
-        <li>Work-from-farm day</li>
-        <li>Festival baskets (chemical-free celebrations)</li>
-        <li>Priority harvest allocation</li>
+        <li>100-yard dedicated family plot</li>
+        <li>Natural farming guidance</li>
+        <li>Seasonal vegetables from your plot</li>
+        <li>Share of community plantation produce</li>
+        <li>Family farm days and activities</li>
+        <li>Members' WhatsApp community</li>
+        <li>Plot setup fee completely waived</li>
+        <li>Special 10% discount on the six-month membership</li>
       </ul>
-      <a href="https://pages.razorpay.com/pl_SJ8YXOeGx5yIZw/view" target="_blank" class="plan-btn plan-btn-filled">JOIN THIS PLAN</a>
+      <div class="plan-total">
+        <strong>Original price: ₹39,000</strong>
+        <span>10% discount: ₹3,900</span>
+        <span>Total payable: ₹35,100</span>
+      </div>
+      <a href="https://rzp.io/rzp/Fasalplus" class="plan-btn plan-btn-outline">
+        JOIN FASAL PLUS
+      </a>
     </div>
-    <!-- Earth Guardian -->
-    <div class="plan-card">
-      <div class="plan-name">Earth Guardian</div>
-      <div class="plan-subtitle">Become a Nature Shareholder</div>
-      <div class="plan-duration">Yearly · Extended</div>
-      <ul class="plan-features">
-        <li>Everything in Root Sharer</li>
-        <li>Save 10% with yearly commitment</li>
-        <li>Additional herbs, flowers &amp; seasonal gifts</li>
-        <li>Farm stay experience</li>
-        <li>Name on Co-Farmer Wall</li>
-        <li>Birthday, Party &amp; Anniversary Celebrations at the Farm (at exclusive discounted rates)</li>
-        <li>Invite-only community events</li>
-      </ul>
-      <a href="https://pages.razorpay.com/pl_SJ91YKuSwlTqKP/view" target="_blank" class="plan-btn plan-btn-outline">JOIN THIS PLAN</a>
-    </div>
+
   </div>
 </section>
+</section>
+
 
 <!-- ===== SECTION 14: TESTIMONIALS ===== -->
 <section id="testimonials">
@@ -877,8 +1221,8 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
 
 <!-- ===== SECTION 15: CTA BANNER ===== -->
 <section id="cta">
-  <h2 class="cta-headline">The poison stops<br>with your generation.</h2>
-  <p class="cta-sub">If you're the sensitive one - the one who actually wants to do something - this is your invitation. Join families who chose responsibility over complaint.</p>
+  <h2 class="cta-headline">Let the next generation<br>know where food comes from.</h2>
+  <p class="cta-sub">Give your family a closer relationship with the soil, the seasons and the people who grow your food. Become part of the Aarogya Bhoomi Co-Farmer community.</p>
   <a href="#plans" class="btn-cta-outline">COMPARE PLANS</a>
 </section>
 
@@ -886,15 +1230,15 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
 <section id="join">
   <div class="section-label" style="justify-content:center;color:var(--green-light);">BECOME A CO-FARMER</div>
   <h2 class="join-title">Join Aarogya Bhoomi</h2>
-  <p class="join-sub">Take the first step toward real food, living soil, and a farm that belongs to your family. Fill in our form and we'll get back to you within 24 hours.</p>
-  <a href="https://forms.gle/s7evFqxFEJ8UdGxU6" target="_blank" class="btn-join">CLICK TO FILL THE FORM →</a>
+  <p class="join-sub">Take the first step toward a closer relationship with food, living soil and seasonal farming. Fill in our form and our team will get back to you.</p>
+  <a href="https://forms.gle/s7evFqxFEJ8UdGxU6" target="_blank" rel="noopener noreferrer" class="btn-join">CLICK TO FILL THE FORM →</a>
 </section>
 
 <!-- ===== SECTION 17: HOW FOOD IS GROWN ===== -->
 <section id="howgrown">
   <div class="section-label" style="color:var(--green-light);">FROM THE SOIL TO YOUR TABLE</div>
   <h2 class="howgrown-title">How your food is grown - naturally.</h2>
-  <p class="howgrown-sub">No shortcuts. No storage. No pretending. Just the honest journey from seed to plate.</p>
+  <p class="howgrown-sub">Follow the journey from seed selection and soil care to seasonal harvest.</p>
   <div class="howgrown-grid">
     <div class="howgrown-item">
       <div class="icon">🌿</div>
@@ -913,8 +1257,8 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
     </div>
     <div class="howgrown-item">
       <div class="icon">🚚</div>
-      <h3>Fresh to Your Door</h3>
-      <p>Harvested and delivered - no cold storage, no wax, no ripening chambers.</p>
+      <h3>Harvest and Collection</h3>
+      <p>Harvested for members to collect at the farm, with optional paid weekly home delivery where available.</p>
     </div>
   </div>
 </section>
@@ -938,9 +1282,9 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
     <h2 class="connect-title">Stay Connected with the Farm</h2>
     <p class="connect-sub">Join our WhatsApp community for weekly farm updates, seasonal recipes, and real conversations about food and soil. Watch us grow on YouTube. Follow the daily life of the farm on Instagram.</p>
     <div class="connect-btns">
-      <a href="https://chat.whatsapp.com/LZJ4VWbZrvA44EUslGDHTS?mode=gi_t" target="_blank" class="btn-wa">💬 Join WhatsApp Community</a>
-      <a href="https://www.youtube.com/@VishuddhiVibes" target="_blank" class="btn-yt">▶ YouTube Channel</a>
-      <a href="https://www.instagram.com/thynaahealthynaturally/" target="_blank" class="btn-ig">📷 Instagram</a>
+      <a href="https://chat.whatsapp.com/Jz52LFFRdn7DQ5U65bd12D?mode=gi_t" target="_blank" rel="noopener noreferrer" class="btn-wa">💬 Join WhatsApp Community</a>
+      <a href="https://www.youtube.com/@VishuddhiVibes" target="_blank" rel="noopener noreferrer" class="btn-yt">▶ YouTube Channel</a>
+      <a href="https://www.instagram.com/thynaahealthynaturally/" target="_blank" rel="noopener noreferrer" class="btn-ig">📷 Instagram</a>
     </div>
   </div>
 </section>
@@ -959,7 +1303,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
 
     <!-- RIGHT CTA (Moved Here) -->
     <div class="resource-cta">
-      <a href="https://forms.gle/4uY3KwMACXqEJdZr6" target="_blank" class="btn-gold big-btn">
+      <a href="https://forms.gle/4uY3KwMACXqEJdZr6" target="_blank" rel="noopener noreferrer" class="btn-gold big-btn">
         DOWNLOAD FREE GUIDE →
       </a>
     </div>
@@ -967,38 +1311,342 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
   </div>
 </section>
 
+
 <!-- ===== SECTION 21: FAQ ===== -->
 <section id="faq">
-  <div class="section-label">COMMON QUESTIONS</div>
-  <h2 class="faq-headline">Everything you want to know before you join.</h2>
-  <div class="faq-item">
-    <button class="faq-q" onclick="toggleFaq(this)">What exactly is the Co-Farmer model? <span class="faq-icon">+</span></button>
-    <div class="faq-a">Instead of buying vegetables as a one-time transaction, you commit to a season alongside the farmer. You receive a weekly harvest box, farm updates, and access to visit the farm - while the farmer has the security to grow without worrying about market prices.</div>
-  </div>
-  <div class="faq-item">
-    <button class="faq-q" onclick="toggleFaq(this)">Where is the farm located? <span class="faq-icon">+</span></button>
-    <div class="faq-a">We have farms in Dobheta, Sonipat and in Sohna, Gurgaon.
-      We invite our co-farmers to visit during scheduled farm days and experience it firsthand.</div>
-  </div>
-  <div class="faq-item">
-    <button class="faq-q" onclick="toggleFaq(this)">What do I receive in the weekly box? <span class="faq-icon">+</span></button>
-    <div class="faq-a">Your weekly harvest box contains whatever is freshly harvested that week - seasonal vegetables, greens, and sometimes herbs. The contents change with the season, and that is intentional.</div>
-  </div>
-  <div class="faq-item">
-    <button class="faq-q" onclick="toggleFaq(this)">Do you deliver to my area? <span class="faq-icon">+</span></button>
-    <div class="faq-a">We currently deliver to Delhi NCR including Gurugram, Noida, and Greater Noida. Contact us on WhatsApp to confirm your pincode.</div>
-  </div>
-  <!-- <div class="faq-item">
-    <button class="faq-q" onclick="toggleFaq(this)">Are the vegetables certified organic? <span class="faq-icon">+</span></button>
-    <div class="faq-a">We farm using Rishi Krishi principles which go beyond organic certification - no synthetic inputs of any kind, indigenous seeds, and desi cow as the foundation. We invite you to visit the farm rather than rely on a certificate.</div>
-  </div> -->
-  <div class="faq-item">
-    <button class="faq-q" onclick="toggleFaq(this)">Can I pause or cancel my plan? <span class="faq-icon">+</span></button>
-    <div class="faq-a">As a co-farmer, you are part of the farming journey for the entire season. The crops continue to grow and be harvested, even if you’re away for a while.
 
-In such cases, you can have your share delivered to a neighbour, friend, or loved one. Since this model ensures stable support for our farmers, plans are not paused or refunded once the season begins.</div>
+  <div class="section-label">COMMON QUESTIONS</div>
+
+  <h2 class="faq-headline">
+    Everything you want to know before you join.
+  </h2>
+
+  <!-- 1. CO-FARMER MODEL -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+      What exactly is the Co-Farmer model?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      As a Co-Farmer, your family gets a dedicated rental plot at
+      Aarogya Bhoomi. Our farm team prepares and tends the land
+      using natural farming practices, while you get to participate
+      in growing, learning and harvesting.
+
+      You also receive an equal family share of produce from our
+      community plantations as it matures, along with access to
+      farm activities and our members' community.
+
+      It is about becoming part of the farming journey, not simply
+      purchasing vegetables.
+    </div>
   </div>
+
+  <!-- 2. LOCATION -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+      Where is Aarogya Bhoomi located?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      Aarogya Bhoomi is located on Sohna Road, Gurgaon, Haryana.
+
+      Members can visit the farm on their own or during scheduled
+      farm activities and events. We share farm updates regularly
+      through our members' WhatsApp group.
+    </div>
+  </div>
+
+  <!-- 3. MEMBERSHIP PLANS -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+      What membership plans are available?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      We offer four Co-Farmer memberships:
+
+      Beej: 50-yard plot for 3 months, ideal for 2–3 family members.
+
+      Beej Plus: 50-yard plot for 6 months, ideal for 2–3 family
+      members.
+
+      Fasal: 100-yard plot for 3 months, ideal for 4–5 family members.
+
+      Fasal Plus: 100-yard plot for 6 months, ideal for 4–5 family
+      members.
+
+      Both Plus plans include a waived plot setup fee. Beej Plus receives a 5% membership discount (₹1,200), bringing the total to ₹22,800. Fasal Plus receives a special 10% membership discount (₹3,900), bringing the total to ₹35,100. Fasal Plus is marked as our Popular Choice.
+    </div>
+  </div>
+
+  <!-- 4. SETUP FEE -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+      What is the plot setup fee?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      The 3-month Beej membership has a one-time setup fee of
+      ₹1,500 for a 50-yard plot.
+
+      The 3-month Fasal membership has a one-time setup fee of
+      ₹2,000 for a 100-yard plot.
+
+      The setup fee covers soil preparation, farming beds, a
+      basic tool kit, your family's plot signboard and a welcome
+      walk.
+
+      For both six-month Plus memberships, the setup fee is
+      completely waived.
+    </div>
+  </div>
+
+  <!-- 5. VEGETABLES -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+      What vegetables will we receive from our plot?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      We grow seasonal vegetables using indigenous (desi) seeds
+      and natural farming practices.
+
+      Your family can participate in growing and harvesting
+      vegetables from its dedicated plot. What grows depends on
+      the season, weather, soil conditions and crop availability.
+
+      We do not promise a fixed quantity or a particular variety
+      of vegetables.
+    </div>
+  </div>
+
+  <!-- 6. COMMUNITY PLANTATION -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+      What is included in the community plantation?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      Our shared community plantation includes ginger, fresh
+      turmeric, papaya, banana, lemon, chilli, lemongrass,
+      marigold, rose and other seasonal plants.
+
+      Produce from the community plantation is shared equally
+      among active member families as it matures and becomes
+      available for harvesting, irrespective of plot size.
+      Papaya and banana are included in the community plantation share when they mature and are available. Other fruits, if offered, will be available at an additional cost. Availability depends on the crop and harvest cycle.
+    </div>
+  </div>
+
+  <!-- 7. WEEKLY BOX / FIXED QUANTITY -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+      Do I get a fixed quantity of vegetables every week?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      No. Farming depends on seasons, weather and crop health.
+      We cannot guarantee a fixed quantity or kind of produce
+      every week.
+
+      You receive produce from your own plot as it is harvested,
+      along with your family's equal share of community
+      plantation produce on announced harvest days.
+
+      We share weekly farm updates so you know what has been
+      harvested and how community produce has been distributed.
+    </div>
+  </div>
+
+  <!-- 8. FARM VISITS -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+      Can we visit the farm and participate in activities?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      Absolutely! We encourage families to visit and experience
+      natural farming.
+
+      You can participate in activities such as sowing,
+      harvesting, composting and seed saving, depending on
+      the farm schedule.
+
+      Each visit can include up to 4 guests for a 50-yard plot
+      or up to 6 guests for a 100-yard plot.
+    </div>
+  </div>
+
+  <!-- 9. DELIVERY -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+      Is weekly home delivery included in the membership?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      Home delivery is an optional paid add-on and is not
+      included in the membership fee.
+
+      Delivery costs ₹250 per week, payable in advance for
+      your selected duration.
+
+      For reference:
+      12 weeks: ₹3,000
+      24 weeks: ₹6,000
+
+      Delivery is available within approximately 20–25 km
+      of Aarogya Bhoomi, Sohna Road, Gurgaon, on designated
+      delivery days across Delhi-NCR.
+
+      Additional delivery charges may apply for locations
+      beyond 25 km.
+
+      If you do not opt for home delivery, you can collect
+      your produce directly from the farm.
+    </div>
+  </div>
+
+  <!-- 10. MEMBERSHIP START -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+      When does my membership begin?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      We prepare your plot and aim to hand it over within
+      21 days of receiving your payment.
+
+      Your membership period begins on the actual plot
+      handover date, not the payment date.
+
+      Beej and Fasal memberships run for 3 months, while
+      Beej Plus and Fasal Plus memberships run for 6 months.
+    </div>
+  </div>
+
+  <!-- 11. RENEWAL -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+      Can I renew my membership after the first term?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      Yes. You can repeat your membership for another term
+      at the applicable monthly membership rate.
+
+      No new plot setup fee will be charged when you renew
+      your membership.
+    </div>
+  </div>
+
+  <!-- 12. FOUNDING FAMILIES -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+      What are the benefits of joining as a founding family?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      We are welcoming our first 20 Co-Farmer families as
+      founding members.
+
+      Founding families receive:
+      <ul>
+        <li>Their monthly membership rate remains unchanged
+            for 12 months after the first term.</li>
+        <li>Priority to choose their plot location.</li>
+        <li>Their family's name on our Founding Families wall.</li>
+        <li>An invitation to our Founders' Day celebration
+            with the farm team.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 13. CANCELLATION AND REFUNDS -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+      Can I cancel my membership or get a refund?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      We understand that plans can change. Our refund policy
+      is designed to be fair to both families and the farm.
+
+      <strong>Within 7 days of payment:</strong>
+      You can request a full refund. We begin plot setup
+      work only from day 8.
+
+      <strong>If you leave during your first term:</strong>
+      The month currently in progress is not refundable.
+      We refund 50% of your unused full months.
+
+      If we are able to allot your plot to another family,
+      we refund 100% of your unused full months after
+      deducting a 10% administrative fee.
+
+      <strong>After your first term:</strong>
+      You can discontinue with 30 days' notice, without
+      an exit penalty.
+
+      If we are unable to provide your designated plot,
+      we refund the unused membership period.
+    </div>
+  </div>
+
+  <!-- 14. TRANSFER -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+      Can I transfer my membership to another family?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      Yes. You may nominate another family to take over
+      the remaining membership period, subject to our
+      approval.
+
+      There is no transfer charge for an approved replacement
+      family.
+    </div>
+  </div>
+
+  <!-- 15. LAND OWNERSHIP -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+      Do I own the plot or the trees growing on it?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      No. Membership provides a licence to use a designated
+      farming area and participate in farm activities.
+      It does not provide ownership or a lease of the land,
+      trees or structures.
+
+      When your membership ends, the plot returns to the
+      farm. You may harvest ripe produce from your plot
+      until your last paid day. Crops still in the ground
+      and all trees remain with the farm.
+    </div>
+  </div>
+
+  <!-- 16. ORGANIC CERTIFICATION -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+      Are your vegetables certified organic?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      We follow natural farming practices and do not claim
+      organic certification.
+
+      We are happy to share our farming input log with
+      members who wish to understand how we grow food.
+      You are also welcome to experience our farming
+      practices during your visits.
+    </div>
+  </div>
+
 </section>
+
 
 <!-- ===== FOOTER ===== -->
 <footer>
@@ -1023,10 +1671,10 @@ In such cases, you can have your share delivered to a neighbour, friend, or love
     <div class="footer-col">
       <h4>CONNECT</h4>
       <ul>
-        <li><a href="https://chat.whatsapp.com/KRHdGIo6HxWDbIVMe3bR22?mode=gi_t" target="_blank">WhatsApp Community</a></li>
-        <li><a href="https://www.youtube.com/@VishuddhiVibes" target="_blank">YouTube</a></li>
-        <li><a href="https://www.instagram.com/thynaahealthynaturally/" target="_blank">Instagram</a></li>
-        <li><a href="https://forms.gle/CcwmLDvwbN7JA8e49" target="_blank">Free Balcony Guide</a></li>
+        <li><a href="https://wa.me/918700491699" target="_blank" rel="noopener noreferrer">Chat with Us</a></li>
+        <li><a href="https://www.youtube.com/@VishuddhiVibes" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+        <li><a href="https://www.instagram.com/thynaahealthynaturally/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="https://forms.gle/CcwmLDvwbN7JA8e49" target="_blank" rel="noopener noreferrer">Free Balcony Guide</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1034,17 +1682,17 @@ In such cases, you can have your share delivered to a neighbour, friend, or love
       <ul>
         <li><a href="#plans">Become a Co-Farmer</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="https://docs.google.com/document/d/1U4Rm0BgFMNKtFZZdkzu-1YzaP3cltAeWkIKZfdtlkFw/edit?usp=sharing" target="_blank">Privacy Policy</a></li>
+        <li><a href="https://docs.google.com/document/d/1U4Rm0BgFMNKtFZZdkzu-1YzaP3cltAeWkIKZfdtlkFw/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
         <li><a href="#join">Contact Us</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2025 Aarogya Bhoomi · Thynaa Healthy Naturally Private Limited · All rights reserved.</p>
+    <p class="footer-copy">© 2026 Aarogya Bhoomi · Thynaa Healthy Naturally Private Limited · All rights reserved.</p>
     <div class="footer-socials">
-      <a href="https://www.instagram.com/thynaahealthynaturally/" target="_blank" class="social-btn">📷</a>
-      <a href="https://www.youtube.com/@VishuddhiVibes" target="_blank" class="social-btn">▶</a>
-      <a href="https://chat.whatsapp.com/KRHdGIo6HxWDbIVMe3bR22?mode=gi_t" target="_blank" class="social-btn">💬</a>
+      <a href="https://www.instagram.com/thynaahealthynaturally/" target="_blank" rel="noopener noreferrer" class="social-btn">📷</a>
+      <a href="https://www.youtube.com/@VishuddhiVibes" target="_blank" rel="noopener noreferrer" class="social-btn">▶</a>
+      <a href="https://wa.me/918700491699" target="_blank" rel="noopener noreferrer" class="social-btn">💬</a>
     </div>
   </div>
 </footer>
@@ -1067,8 +1715,9 @@ function goToSlide(n) {
 function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
 // FAQ
 function toggleFaq(btn) {
-  btn.classList.toggle('open');
-  btn.nextElementSibling.classList.toggle('open');
+  const isOpen = btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open', isOpen);
+  btn.setAttribute('aria-expanded', String(isOpen));
 }
 </script>
 </body>

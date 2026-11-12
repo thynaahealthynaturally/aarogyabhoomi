@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aarogya Bhoomi – Natural Farming</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,500;1,600&display=swap" rel="stylesheet">
+<style>
+/* ============ RESET & VARIABLES ============ */
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --cream:#f5f0e8;
+  --dark-brown:#2c1f0e;
+  --med-brown:#3d2b1a;
+  --green:#3a6b45;
+  --green-light:#5a9968;
+  --green-dark:#2e5438;
+  --gold:#c8860a;
+  --terracotta:#b5451b;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--dark-brown);overflow-x:hidden;}
+
+/* ============ NAV ============ */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--cream);border-bottom:1px solid rgba(44,31,14,0.12);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:46px;width:46px;object-fit:cover;border-radius:50%;border:2px solid var(--green);}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--dark-brown);}
+.nav-logo-text span{color:var(--green);}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--dark-brown);font-size:0.78rem;letter-spacing:0.12em;font-weight:700;transition:color 0.2s;}
+.nav-links a:hover{color:var(--green);}
+.nav-join{background:var(--green);color:#fff;padding:10px 22px;font-size:0.78rem;letter-spacing:0.12em;font-weight:700;text-decoration:none;transition:background 0.2s;}
+.nav-join:hover{background:var(--green-dark);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--dark-brown);}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--cream);border-bottom:1px solid rgba(44,31,14,0.12);padding:20px 40px;z-index:999;flex-direction:column;gap:16px;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{text-decoration:none;color:var(--dark-brown);font-size:0.9rem;letter-spacing:0.1em;font-weight:700;padding:8px 0;border-bottom:1px solid rgba(44,31,14,0.08);}
+.mobile-menu .mob-join{background:var(--green);color:#fff;padding:12px 20px;text-align:center;border-bottom:none;margin-top:8px;}
+
+/* ============ HERO SLIDER ============ */
+#hero{margin-top:64px;position:relative;height:75vh;min-height:480px;overflow:hidden;}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 0.8s ease;pointer-events:none;z-index:2;}
+.slide.active{opacity:1;}
+.slide-bg{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+.slide-bg.contain{object-fit:contain;background:#1a3a1a;}
+.slide-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.62) 0%,rgba(0,0,0,0.25) 55%,transparent 100%);z-index:3;pointer-events:none;}
+.slide-content{position:absolute;bottom:80px;left:60px;max-width:580px;color:#fff;z-index:10;pointer-events:all;}
+.slide-label{font-size:0.7rem;letter-spacing:0.2em;font-weight:700;margin-bottom:12px;opacity:0.85;}
+.slide-headline{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:900;line-height:1.1;margin-bottom:16px;}
+.slide-headline em{color:#7ecf96;font-style:italic;}
+.slide-sub{font-size:0.95rem;line-height:1.6;opacity:0.9;margin-bottom:24px;max-width:440px;}
+.slide-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
+.slide-tag{border:1px solid rgba(255,255,255,0.5);padding:5px 14px;font-size:0.72rem;letter-spacing:0.08em;border-radius:20px;}
+/* .slide-btns{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:20;pointer-events:all;}
+.btn-primary{background:var(--green);color:#fff;padding:12px 24px;font-size:0.75rem;letter-spacing:0.12em;font-weight:700;text-decoration:none;display:inline-block;cursor:pointer;transition:background 0.2s;position:relative;z-index:20;}
+.btn-primary:hover{background:var(--green-dark);} */
+.slider-nav{position:absolute;bottom:20px;right:40px;display:flex;gap:8px;z-index:100;}
+.slider-dot{width:10px;height:10px;border-radius:50%;border:2px solid #fff;cursor:pointer;transition:background 0.2s;}
+.slider-dot.active{background:#fff;}
+.slider-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.7);color:#fff;width:50px;height:50px;border-radius:50%;cursor:pointer;font-size:1.3rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s;z-index:100;pointer-events:all;}
+.slider-arrow:hover{background:rgba(255,255,255,0.45);border-color:#fff;}
+.slider-arrow.prev{left:20px;}
+.slider-arrow.next{right:20px;}
+
+/* ============ SECTION 2: BANNER ============ */
+#banner{padding:60px 80px;background:linear-gradient(135deg,#b5451b 0%,#c8670a 50%,#d4820a 100%);}
+.banner-headline{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;line-height:1.1;color:#fff;margin-bottom:20px;}
+.banner-headline .green{color:#7ecf96;}
+.banner-sub{font-size:1rem;line-height:1.7;color:rgba(255,255,255,0.85);max-width:520px;}
+
+/* ============ SHARED ============ */
+.section-label{display:flex;align-items:center;gap:10px;font-size:0.72rem;letter-spacing:0.2em;color:var(--green);font-weight:700;margin-bottom:20px;}
+.section-label::before{content:'';display:block;width:32px;height:2px;background:var(--green);}
+
+/* ============ SECTION 3: ABOUT ============ */
+#about{padding:80px 80px;background:var(--cream);}
+.about-headline{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:800;line-height:1.2;margin-bottom:28px;max-width:700px;}
+.about-body p{font-size:1rem;line-height:1.8;color:#3d2b1a;margin-bottom:18px;max-width:680px;}
+.blockquote{border-left:3px solid var(--green);padding-left:20px;margin:24px 0;}
+.blockquote p{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--green);}
+
+/* ============ SECTION 4: STATS ============ */
+#stats{padding:60px 80px;background:var(--cream);border-top:1px solid rgba(44,31,14,0.1);border-bottom:1px solid rgba(44,31,14,0.1);}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr 1fr;}
+.stat-item{text-align:center;padding:20px 40px;}
+.stat-item:not(:last-child){border-right:1px solid rgba(44,31,14,0.15);}
+.stat-num{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:900;color:var(--terracotta);line-height:1;}
+.stat-bold{font-weight:900;margin-bottom:6px;font-size:0.9rem;letter-spacing:0.05em;}
+.stat-desc{font-size:0.85rem;line-height:1.5;color:#5a3e28;max-width:200px;margin:0 auto;}
+.stat-link-block{
+  display:block;
+  color:inherit;
+  text-decoration:none;
+}
+
+.stat-link-block:hover{
+  opacity:0.85;
+}
+
+.stat-link-block{
+  display:block;
+  color:inherit;
+  text-decoration:none;
+}
+
+.stat-link-block:hover{
+  opacity:0.85;
+}
+
+/* ADD THIS BELOW */
+.stat-link-block::after{
+  content:" ↗";
+  font-size:0.8rem;
+  opacity:0;
+  transition:0.2s;
+}
+
+.stat-link-block:hover::after{
+  opacity:0.6;
+}
+
+/* ============ SECTION 5: THREE PROBLEMS ============ */
+#problems{padding:70px 80px;background:#2d2d10;}
+.problems-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:#fff;text-align:center;margin-bottom:50px;}
+.problems-title em{color:var(--green-light);font-style:italic;}
+.problems-grid{display:grid;grid-template-columns:1fr 1fr 1fr;}
+.problem-card{padding:40px 36px;border:1px solid rgba(255,255,255,0.08);}
+.problem-card.featured{border-top:3px solid var(--green-light);}
+.problem-icon{width:40px;height:40px;background:rgba(255,255,255,0.08);border-radius:50%;margin-bottom:24px;display:flex;align-items:center;justify-content:center;}
+.problem-icon::after{content:'▪';color:var(--green-light);font-size:12px;}
+.problem-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);margin-bottom:14px;}
+.problem-card p{font-size:0.9rem;line-height:1.7;color:rgba(255,255,255,0.7);}
+
+/* ============ SECTION 6: PHILOSOPHY ============ */
+#philosophy{padding:80px 80px;background:var(--cream);}
+.philosophy-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.philosophy-quote{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,5rem);font-style:italic;color:var(--green);line-height:1.2;margin-bottom:16px;}
+.philosophy-translation{font-size:0.72rem;letter-spacing:0.2em;color:var(--terracotta);font-weight:700;}
+.philosophy-right p{font-size:1rem;line-height:1.8;color:var(--med-brown);margin-bottom:18px;}
+.pill-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}
+.pill{border:1px solid rgba(58,107,69,0.4);padding:7px 16px;border-radius:20px;font-size:0.8rem;color:var(--dark-brown);background:rgba(58,107,69,0.06);}
+
+/* ============ SECTION 7: OUR WAY ============ */
+#ourway{padding:80px 80px;background:var(--cream);border-top:1px solid rgba(44,31,14,0.08);}
+.ourway-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.ourway-headline{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.15;margin-bottom:36px;}
+.practice-item{display:flex;gap:16px;margin-bottom:28px;align-items:flex-start;}
+.practice-icon{width:44px;height:44px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;}
+.practice-text h4{font-weight:700;font-size:0.95rem;margin-bottom:6px;}
+.practice-text p{font-size:0.88rem;line-height:1.6;color:#5a3e28;}
+.rishi-card{background:#2c1f0e;padding:40px;}
+.rishi-card h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-style:italic;color:var(--gold);margin-bottom:20px;}
+.rishi-card p{font-size:0.9rem;line-height:1.7;color:rgba(255,255,255,0.75);margin-bottom:14px;}
+.rishi-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+.rishi-tag{border:1px solid rgba(90,153,104,0.5);padding:5px 14px;font-size:0.75rem;color:var(--green-light);}
+
+/* ============ SECTION 8: SEEDS ============ */
+#seeds{padding:60px 80px;background:#1e1a0a;}
+.seeds-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;margin-bottom:30px;}
+.seeds-strip{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;margin-bottom:20px;}
+.seed-img{aspect-ratio:1;overflow:hidden;}
+.seed-img img{width:100%;height:100%;object-fit:cover;}
+.seeds-caption{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:rgba(255,255,255,0.5);text-align:center;}
+
+/* ============ SECTION 9: FARMER STORY ============ */
+#farmer{padding:80px 80px;background:var(--cream);}
+.farmer-content{max-width:780px;margin:0 auto;text-align:center;}
+.farmer-headline{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1.2;margin-bottom:36px;}
+.farmer-body p{font-size:1rem;line-height:1.8;color:var(--med-brown);margin-bottom:20px;}
+.farmer-italic{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--dark-brown);margin:28px 0;}
+
+/* ============ SECTION 10: CO-FARMER ============ */
+#cofarmer{padding:80px 80px;background:var(--cream);}
+.cofarmer-card{background:var(--green);padding:50px 60px;max-width:760px;margin:0 auto 40px;text-align:center;}
+.cofarmer-badge{display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);padding:7px 18px;font-size:0.72rem;letter-spacing:0.15em;color:#fff;border-radius:20px;margin-bottom:24px;}
+.cofarmer-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#fff;margin-bottom:20px;}
+.cofarmer-body{font-size:0.95rem;line-height:1.7;color:rgba(255,255,255,0.85);margin-bottom:18px;}
+.cofarmer-bold{font-weight:700;font-size:1rem;color:#fff;}
+.cofarmer-footer{text-align:center;font-size:1rem;line-height:1.7;color:var(--terracotta);max-width:720px;margin:0 auto;}
+
+/* ============ SECTION 11: OUR FARM - MARQUEE ============ */
+#farm{padding:60px 0;background:var(--cream);}
+.farm-header{padding:0 80px;margin-bottom:30px;}
+.farm-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;}
+.farm-marquee-wrap{overflow:hidden;width:100%;position:relative;}
+.farm-marquee-wrap::before,.farm-marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;}
+.farm-marquee-wrap::before{left:0;background:linear-gradient(to right,var(--cream),transparent);}
+.farm-marquee-wrap::after{right:0;background:linear-gradient(to left,var(--cream),transparent);}
+.farm-track{display:flex;gap:12px;width:max-content;animation:farmScroll 30s linear infinite;}
+.farm-track:hover{animation-play-state:paused;}
+.farm-img-item{width:340px;height:260px;overflow:hidden;flex-shrink:0;}
+.farm-img-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;}
+.farm-img-item:hover img{transform:scale(1.05);}
+@keyframes farmScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* ============ SECTION 12: COMPARISON TABLE ============ */
+#compare{padding:80px 80px;background:var(--cream);}
+.compare-headline{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:900;margin-bottom:8px;}
+.compare-sub{font-size:1rem;color:#5a3e28;margin-bottom:40px;}
+.compare-table{width:100%;border-collapse:collapse;box-shadow:0 2px 20px rgba(44,31,14,0.08);}
+.compare-table thead tr th:nth-child(1){background:#3d2b1a;}
+.compare-table thead tr th:nth-child(2){background:#8b2500;}
+.compare-table thead tr th:nth-child(3){background:#2e5438;}
+.compare-table th{padding:18px 24px;font-size:0.85rem;letter-spacing:0.1em;font-weight:800;text-align:left;color:#fff;}
+.compare-table tbody tr:nth-child(odd) td:nth-child(1){background:#f0e8dc;}
+.compare-table tbody tr:nth-child(even) td:nth-child(1){background:#e8ddd0;}
+.compare-table tbody tr:nth-child(odd) td:nth-child(2){background:#fff5f2;}
+.compare-table tbody tr:nth-child(even) td:nth-child(2){background:#ffe8e2;}
+.compare-table tbody tr:nth-child(odd) td:nth-child(3){background:#f0f7f2;}
+.compare-table tbody tr:nth-child(even) td:nth-child(3){background:#e4f0e8;}
+.compare-table td{padding:16px 24px;font-size:0.9rem;line-height:1.5;border-bottom:1px solid rgba(44,31,14,0.06);vertical-align:middle;}
+.compare-table td:first-child{font-size:0.75rem;letter-spacing:0.12em;font-weight:800;color:#3d2b1a;text-transform:uppercase;}
+.compare-table td:nth-child(2){color:#8b2500;font-weight:500;}
+.compare-table td:nth-child(3){color:#2e5438;font-weight:500;}
+
+
+/* ============ SECTION 13: PLANS ============ */
+
+#plans {
+    padding: 80px 50px;
+    background: var(--cream);
+}
+
+.plans-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.plans-intro {
+    max-width: 680px;
+    margin: 0 auto 50px;
+}
+
+.plans-intro p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--med-brown);
+    margin-bottom: 16px;
+}
+
+.plans-intro p.highlight {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark-brown);
+    line-height: 1.7;
+}
+
+/* Four-column desktop layout */
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 1500px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+/* Individual membership cards */
+.plan-card {
+    padding: 28px 20px;
+    border: 1px solid rgba(44,31,14,0.15);
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(44,31,14,0.10);
+}
+
+/* Featured Fasal card */
+.plan-card.featured {
+    background: #2c1f0e;
+    border-color: transparent;
+}
+
+.plan-card.featured .plan-name {
+    color: var(--gold);
+}
+
+.plan-badge {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    padding: 5px 12px;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    margin-bottom: 14px;
+    align-self: flex-start;
+}
+
+.plan-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.45rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: var(--dark-brown);
+}
+
+.plan-subtitle {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: #5a3e28;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.plan-card.featured .plan-subtitle {
+    color: rgba(255,255,255,0.82);
+}
+
+.plan-duration {
+    font-size: 0.78rem;
+    color: var(--terracotta);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.plan-card.featured .plan-duration {
+    color: #f0d9a8;
+}
+
+/* Price */
+.plan-price {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-weight: 800;
+    color: var(--dark-brown);
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.plan-card.featured .plan-price {
+    color: var(--gold);
+}
+
+/* Features */
+.plan-features {
+    list-style: none;
+    margin: 12px 0 24px;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.plan-features li {
+    font-size: 0.79rem;
+    padding: 8px 0 8px 20px;
+    position: relative;
+    line-height: 1.5;
+    color: #3d2b1a;
+    border-bottom: 1px solid rgba(44,31,14,0.07);
+}
+
+.plan-card.featured .plan-features li {
+    color: rgba(255,255,255,0.9);
+    border-bottom-color: rgba(255,255,255,0.12);
+}
+
+.plan-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 700;
+}
+
+.plan-card.featured .plan-features li::before {
+    color: var(--green-light);
+}
+
+/* Pricing breakdown */
+.plan-total {
+    padding: 14px 12px;
+    background: rgba(44,31,14,0.05);
+    margin-bottom: 18px;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: var(--dark-brown);
+}
+
+.plan-total strong,
+.plan-total span {
+    display: block;
+}
+
+.plan-card.featured .plan-total {
+    background: rgba(255,255,255,0.09);
+    color: #fff;
+}
+
+.plan-card.featured .plan-total strong {
+    color: var(--gold);
+}
+
+/* Buttons */
+.plan-btn {
+    display: block;
+    text-align: center;
+    padding: 13px 8px;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    text-decoration: none;
+    width: 100%;
+    transition: all 0.2s;
+    margin-top: auto;
+}
+
+.plan-btn-outline {
+    border: 2px solid var(--green);
+    color: var(--green);
+    background: transparent;
+}
+
+.plan-btn-outline:hover {
+    background: var(--green);
+    color: #fff;
+}
+
+.plan-btn-filled {
+    background: var(--green);
+    color: #fff;
+}
+
+.plan-btn-filled:hover {
+    background: var(--green-dark);
+}
+
+/* Plus plan discount label */
+.plan-discount {
+    display: inline-block;
+    background: #e7f0df;
+    color: #315c32;
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 5px 9px;
+    margin-bottom: 12px;
+    letter-spacing: 0.04em;
+}
+
+/* Tablet: two columns */
+@media (max-width: 1100px) {
+    #plans {
+        padding: 65px 30px;
+    }
+
+    .plans-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 760px;
+        gap: 20px;
+    }
+
+    .plan-card {
+        padding: 28px 24px;
+    }
+}
+
+/* Mobile: single column */
+@media (max-width: 600px) {
+    #plans {
+        padding: 50px 18px;
+    }
+
+    .plans-headline {
+        font-size: 2.1rem;
+    }
+
+    .plans-intro {
+        margin-bottom: 30px;
+    }
+
+    .plans-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .plan-card {
+        padding: 26px 22px;
+    }
+
+    .plan-name {
+        font-size: 1.55rem;
+    }
+
+    .plan-price {
+        font-size: 1.9rem;
+    }
+}
+
+
+/* ============ SECTION 14: TESTIMONIALS ============ */
+#testimonials{padding:80px 80px;background:var(--cream);border-top:1px solid rgba(44,31,14,0.08);}
+.test-headline{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.2;margin-bottom:50px;max-width:680px;}
+.test-grid{display:grid;grid-template-columns:1fr 1fr 1fr;}
+.test-item{padding:0 36px;}
+.test-item:not(:last-child){border-right:1px solid rgba(44,31,14,0.12);}
+.test-quote{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;line-height:1.7;color:var(--dark-brown);margin-bottom:20px;}
+.test-name{font-weight:700;font-size:0.9rem;margin-bottom:4px;}
+.test-role{font-size:0.8rem;color:var(--terracotta);}
+
+/* ============ SECTION 15: CTA ============ */
+#cta{padding:80px;background:var(--green);text-align:center;}
+.cta-headline{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:900;color:#fff;line-height:1.15;margin-bottom:20px;}
+.cta-sub{font-size:1rem;color:rgba(255,255,255,0.85);margin-bottom:32px;max-width:620px;margin-left:auto;margin-right:auto;}
+.btn-cta-outline{display:inline-block;border:2px solid rgba(255,255,255,0.7);color:#fff;padding:14px 36px;font-size:0.78rem;letter-spacing:0.12em;font-weight:700;text-decoration:none;background:transparent;transition:all 0.2s;}
+.btn-cta-outline:hover{background:#fff;color:var(--green);}
+
+/* ============ SECTION 16: JOIN FORM ============ */
+#join{padding:80px;background:#2c1f0e;text-align:center;}
+.join-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:900;color:#f5f0e8;margin-bottom:20px;}
+.join-sub{font-size:1rem;line-height:1.7;color:rgba(245,240,232,0.7);margin-bottom:36px;max-width:600px;margin-left:auto;margin-right:auto;}
+.btn-join{display:inline-block;background:var(--green);color:#fff;padding:16px 40px;font-size:0.82rem;letter-spacing:0.15em;font-weight:700;text-decoration:none;transition:background 0.2s;}
+.btn-join:hover{background:var(--green-dark);}
+
+/* ============ SECTION 17: HOW GROWN ============ */
+#howgrown{padding:60px 80px;background:#2a2e14;}
+.howgrown-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;margin-bottom:14px;}
+.howgrown-sub{font-size:0.9rem;color:rgba(255,255,255,0.6);margin-bottom:40px;}
+.howgrown-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+.howgrown-item{padding:30px 28px;border:1px solid rgba(255,255,255,0.07);}
+.howgrown-item.featured{border-top:3px solid var(--green-light);}
+.howgrown-item .icon{font-size:1.8rem;margin-bottom:16px;}
+.howgrown-item h3{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--gold);margin-bottom:10px;}
+.howgrown-item p{font-size:0.85rem;line-height:1.6;color:rgba(255,255,255,0.65);}
+
+/* ============ SECTION 18: TEAM ============ */
+#team{padding:70px 80px;background:var(--cream);}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px;}
+.team-card img{width:100%;height:auto;display:block;border-radius:4px;}
+
+/* ============ SECTION 19: CONNECT ============ */
+#connect{padding:60px 80px;background:var(--cream);}
+.connect-box{border:1px solid rgba(180,100,50,0.25);padding:50px 60px;max-width:900px;margin:0 auto;}
+.connect-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:800;margin-bottom:12px;}
+.connect-sub{font-size:0.95rem;line-height:1.7;color:#5a3e28;margin-bottom:30px;}
+.connect-btns{display:flex;flex-wrap:wrap;gap:12px;}
+.btn-wa{background:#25d366;color:#fff;padding:14px 24px;font-size:0.82rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:8px;}
+.btn-yt{background:#ff0000;color:#fff;padding:14px 24px;font-size:0.82rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:8px;}
+.btn-ig{background:#1a1a1a;color:#fff;padding:14px 24px;font-size:0.82rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:8px;}
+
+/* ============ SECTION 20: FREE RESOURCE ============ */
+#resource {
+  padding: 80px 100px;
+  background: linear-gradient(135deg, #2e1e0a, #1f1407);
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.resource-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 900;
+  color: #f5f0e8;
+  margin-bottom: 18px;
+}
+
+.resource-sub {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: rgba(245,240,232,0.75);
+  margin-bottom: 32px;
+  max-width: 480px;
+}
+
+/* CTA Button Upgrade */
+.btn-gold {
+  display: inline-block;
+  background: linear-gradient(135deg, #c6a85a, #a8893f);
+  color: #fff;
+  padding: 14px 30px;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(198,168,90,0.25);
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(198,168,90,0.4);
+}
+
+/* Card Upgrade */
+.resource-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 60px 40px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  transition: all 0.4s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  border-color: rgba(198,168,90,0.4);
+}
+
+.resource-card .icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.resource-card p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: rgba(245,240,232,0.75);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  #resource {
+    padding: 60px 30px;
+  }
+
+  .resource-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .resource-sub {
+    max-width: 100%;
+  }
+
+  .resource-card {
+    padding: 40px 30px;
+  }
+}
+/* Align CTA to center-right */
+.resource-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Bigger premium button */
+.big-btn {
+  font-size: 0.9rem;
+  padding: 18px 40px;
+  letter-spacing: 0.15em;
+}
+
+/* ============ SECTION 21: FAQ ============ */
+#faq{padding:80px 80px;background:var(--cream);}
+.faq-headline{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:40px;max-width:700px;}
+.faq-item{border-bottom:1px solid rgba(44,31,14,0.12);}
+.faq-q{width:100%;background:none;border:none;padding:22px 0;font-size:0.98rem;font-weight:600;color:var(--dark-brown);text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'Lato',sans-serif;}
+.faq-q .faq-icon{color:var(--green);font-size:1.3rem;transition:transform 0.3s;}
+.faq-q.open .faq-icon{transform:rotate(45deg);}
+.faq-a{display:none;padding:0 0 20px;font-size:0.92rem;line-height:1.7;color:#5a3e28;max-width:820px;}
+.faq-a.open{display:block;}
+
+/* ============ FOOTER ============ */
+footer{background:#0f0e06;padding:60px 80px 30px;}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px;}
+.footer-logo-text{font-family:'Playfair Display',serif;font-size:1.3rem;color:#f5f0e8;font-weight:700;}
+.footer-logo-text span{color:var(--green-light);}
+.footer-tagline{font-size:0.78rem;color:rgba(245,240,232,0.4);margin:4px 0 14px;}
+.footer-desc{font-size:0.85rem;line-height:1.7;color:rgba(245,240,232,0.55);}
+.footer-col h4{font-size:0.7rem;letter-spacing:0.2em;color:rgba(245,240,232,0.4);margin-bottom:16px;font-weight:700;}
+.footer-col ul{list-style:none;}
+.footer-col li{margin-bottom:10px;}
+.footer-col a{text-decoration:none;font-size:0.88rem;color:rgba(245,240,232,0.7);transition:color 0.2s;}
+.footer-col a:hover{color:var(--green-light);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:0.78rem;color:rgba(245,240,232,0.35);}
+.footer-socials{display:flex;gap:10px;}
+.social-btn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:0.85rem;color:rgba(245,240,232,0.6);transition:all 0.2s;}
+.social-btn:hover{background:var(--green);color:#fff;}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:900px){
+  nav .nav-links,nav .nav-join{display:none;}
+  .hamburger{display:flex;}
+  #banner,#about,#stats,#problems,#philosophy,#ourway,#seeds,#farmer,#cofarmer,#compare,#plans,#testimonials,#cta,#join,#howgrown,#team,#connect,#resource,#faq,footer{padding:50px 24px;}
+  .farm-header{padding:0 24px;}
+  .philosophy-grid,.ourway-grid,.resource-grid,.footer-grid{grid-template-columns:1fr;gap:32px;}
+  .stats-grid{grid-template-columns:1fr;}
+  .stat-item{border-right:none !important;border-bottom:1px solid rgba(44,31,14,0.15);padding:24px 0;}
+  .problems-grid,.howgrown-grid{grid-template-columns:1fr;}
+  .plans-grid{grid-template-columns:1fr;max-width:100%;}
+  .test-grid{grid-template-columns:1fr;}
+  .test-item{border-right:none !important;padding:0 0 30px;margin-bottom:20px;}
+  .seeds-strip{grid-template-columns:repeat(4,1fr);}
+  .team-grid{grid-template-columns:1fr 1fr;}
+  .slide-content{left:24px;bottom:50px;max-width:88%;}
+  .compare-table{font-size:0.78rem;}
+  .compare-table th,.compare-table td{padding:10px 10px;}
+  .connect-box{padding:30px 20px;}
+  .connect-btns{flex-direction:column;}
+  .farm-img-item{width:260px;height:200px;}
+  .cofarmer-card{padding:36px 24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <img src="logo.png" alt="Aarogya Bhoomi Logo">
+    <span class="nav-logo-text">Aarogya<span>Bhoomi</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">THE PROBLEM</a></li>
+    <li><a href="#ourway">HOW WE GROW</a></li>
+    <li><a href="#cofarmer">BECOME A CO-FARMER</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#plans" class="nav-join">JOIN NOW</a>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">THE PROBLEM</a>
+  <a href="#ourway" onclick="toggleMenu()">HOW WE GROW</a>
+  <a href="#cofarmer" onclick="toggleMenu()">BECOME A CO-FARMER</a>
+  <a href="#faq" onclick="toggleMenu()">FAQ</a>
+  <a href="#plans" class="mob-join" onclick="toggleMenu()">JOIN NOW</a>
+</div>
+
+<!-- ===== SECTION 1: HERO SLIDER ===== -->
+<section id="hero">
+  <div class="slide active" id="slide-0">
+    <img class="slide-bg" src="slide1.jpg" alt="Farm">
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <p class="slide-label">AAROGYA BHOOMI · SOHNA FARM, GURGAON</p>
+      <h1 class="slide-headline">Where we <em>heal the soil</em><br>with love - so it can heal all of us.</h1>
+      <p class="slide-sub">A natural farm. A living community. Food the way it was always meant to be.</p>
+      <!-- <div class="slide-btns">
+        <a href="#cofarmer" class="btn-primary">BECOME A CO-FARMER</a>
+      </div> -->
+    </div>
+  </div>
+  <div class="slide" id="slide-1">
+    <img class="slide-bg" src="slide2.jpg" alt="Co-Farmers">
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <p class="slide-label">THE CO-FARMER MODEL</p>
+      <h1 class="slide-headline">You share the cost.<br><em>We share the harvest.</em></h1>
+      <p class="slide-sub">Visit our natural farm. Bring your family, enjoy with children. Touch the soil. Be part of it.</p>
+      <!-- <div class="slide-btns">
+        <a href="#about" class="btn-primary">LEARN MORE</a>
+      </div> -->
+    </div>
+  </div>
+  <div class="slide" id="slide-2">
+    <img class="slide-bg contain" src="slide3.jpg" alt="Farm Sign">
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <p class="slide-label">RISHI KRISHI</p>
+      <h1 class="slide-headline">Farming the way<br><em>nature always intended.</em></h1>
+      <div class="slide-tags">
+        <span class="slide-tag">🐄 Desi Cow as Pillar</span>
+        <span class="slide-tag">🌿 Pest Management, not Killing</span>
+        <span class="slide-tag">⚖️ Panchbhoota in Harmony</span>
+      </div>
+      <!-- <div class="slide-btns">
+        <a href="#philosophy" class="btn-primary">OUR PRACTICES</a>
+      </div> -->
+    </div>
+  </div>
+  <button class="slider-arrow prev" onclick="changeSlide(-1)">&#8592;</button>
+  <button class="slider-arrow next" onclick="changeSlide(1)">&#8594;</button>
+  <div class="slider-nav">
+    <span class="slider-dot active" onclick="goToSlide(0)"></span>
+    <span class="slider-dot" onclick="goToSlide(1)"></span>
+    <span class="slider-dot" onclick="goToSlide(2)"></span>
+  </div>
+</section>
+
+<!-- ===== SECTION 2: ORANGE BANNER ===== -->
+<section id="banner">
+  <h2 class="banner-headline">No Chemicals.<br>No Shortcuts.<br><span class="green">Natural Food.</span></h2>
+  <p class="banner-sub">Grown with natural practices in living soil with indigenous seeds. Freshly harvested and delivered to your door, weekly.</p>
+</section>
+
+<!-- ===== SECTION 3: ABOUT ===== -->
+<section id="about">
+  <div class="section-label">A QUESTION WORTH ASKING</div>
+  <h2 class="about-headline">Do you remember the mango that actually tasted like a mango?</h2>
+  <div class="about-body">
+    <p>Your grandparents might have. When food made you feel STRONG - not just FULL. That food came from SOIL that was ALIVE.</p>
+    <p>Now think about what you ate today. Do you know which soil it came from? How many days in cold storage - waxed, treated, made to look fresh?</p>
+    <div class="blockquote"><p>We have confused shine with health.</p></div>
+    <p>Today vegetables look perfect. A full plate which feels like nourishment. Yet they are delivering slow poison to our families bodies with every bite.</p>
+    <p>The average Indian vegetable today travels through cold storage, ripening chambers, and chemical wax before it reaches your hand. The pesticide residue on what you call "fresh vegetables" would fail safety standards in many countries.</p>
+    <p><strong>This is not fear-mongering.</strong> This is what happens when a generation decided that <strong>cheap and convenient</strong> was the same as good.</p>
+    <p>The most dangerous thing? It looks completely normal.</p>
+  </div>
+</section>
+
+<!-- ===== SECTION 4: STATS ===== -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.0" target="_blank" class="stat-link-block">
+    <div class="stat-num">50%+</div>
+    <p class="stat-bold">of India's soil</p>
+    <p class="stat-desc">deficient in one or more critical micronutrients - a crisis driven by decades of intensive chemical farming</p>
+  </a>
+</div>
+    <div class="stat-item">
+  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.w9hluz1jmqlg" target="_blank" class="stat-link-block">
+    <div class="stat-num">94%</div>
+    <p class="stat-bold">Delhi's NCR entire agricultural belt</p>
+    <p class="stat-desc">is carbon deficient</p>
+  </a>
+</div>
+    <div class="stat-item">
+  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.w9hluz1jmqlg" target="_blank" class="stat-link-block">
+    <div class="stat-num">89%</div>
+    <p class="stat-bold">of India's soils are nitrogen-deficient</p>
+    <p class="stat-desc">directly caused by organic carbon collapse</p>
+  </a>
+</div>
+    <div class="stat-item">
+  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.w9hluz1jmqlg" target="_blank" class="stat-link-block">
+    <div class="stat-num">0.54%</div>
+    <p class="stat-bold">average soil carbon in India</p>
+    <p class="stat-desc">less than half the 1-1.5% minimum needed for healthy, nutrient-rich food production - driven by decades of chemical farming</p>
+  </a>
+</div>
+<div class="stat-item">
+  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.71gcc62760l8" target="_blank" class="stat-link-block">
+    <div class="stat-num">2×</div>
+    <p class="stat-bold">more pesticide residue</p>
+    <p class="stat-desc">incidence found in Indian produce in just 5 years</p>
+  </a>
+</div>
+    <div class="stat-item">
+  <a href="https://docs.google.com/document/d/16eoE5khnWQK91-TIq-dmLjwoSp5go3Yxzo04MB9CtpY/edit?tab=t.cepxxj23qaq6" target="_blank" class="stat-link-block">
+    <div class="stat-num">1 in 3</div>
+    <p class="stat-bold">Indian children</p>
+    <p class="stat-desc">under 5 suffer from hidden hunger - nutrient deficiency despite eating enough calories</p>
+  </a>
+</div>
+  </div>
+</section>
+<!-- ===== SECTION 5: THREE PROBLEMS ===== -->
+<section id="problems">
+  <h2 class="problems-title">Three Problems. <em>One root.</em></h2>
+  <div class="problems-grid">
+    <div class="problem-card">
+      <h3>The Soil is Dying</h3>
+      <p>What grows in dead soil is not food — it is the shape of food. It looks right. It weighs right. But the nutrition is gone. And what we lose in the soil, we pay for in our bodies.</p>
+    </div>
+    <div class="problem-card featured">
+      <h3>The Chemicals Don't Stay</h3>
+      <p>They seep into groundwater. They rise as vapour. They travel into the air we breathe and the water we drink. Our bodies are keeping score.</p>
+    </div>
+    <div class="problem-card">
+      <h3>Our Children Inherit This</h3>
+      <p>Children developing allergies and hormonal conditions that didn't exist a generation ago. We call it lifestyle disease. But the lifestyle hasn't changed that much. The food has.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 6: PHILOSOPHY ===== -->
+<section id="philosophy">
+  <div class="philosophy-grid">
+    <div>
+      <div class="philosophy-quote">"यथा अन्नं,<br>तथा मन्नः"</div>
+      <p class="philosophy-translation">YATHA ANNA, THATHA MANN - AS IS THE FOOD, SO IS THE MIND</p>
+    </div>
+    <div class="philosophy-right">
+      <div class="section-label">OUR PHILOSOPHY</div>
+      <p>Food is not just what we eat - it is the balance between all five elements. When Prithvi, Jal, Agni, Vayu, and Akasha are in harmony, that is what nature is truly about.</p>
+      <p>Our ancestors farmed in conversation with nature - not in combat with it. The result was food that healed. Soil that grew richer every season.</p>
+      <div class="pill-tags">
+        <span class="pill">🌍 Prithvi</span>
+        <span class="pill">💧 Jal</span>
+        <span class="pill">🔥 Agni</span>
+        <span class="pill">🌀 Vayu</span>
+        <span class="pill">✨ Akasha</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 7: OUR WAY ===== -->
+<section id="ourway">
+  <div class="ourway-grid">
+    <div>
+      <div class="section-label">HOW WE GROW</div>
+      <h2 class="ourway-headline">Farming the ancient way, for the modern family.</h2>
+      <div class="practice-item">
+        <div class="practice-icon">🌿</div>
+        <div class="practice-text">
+          <h4>Indigenous Seeds</h4>
+          <p>Seeds preserved across generations - carrying the memory of thousands of seasons. We grow only what the land already knows.</p>
+        </div>
+      </div>
+      <div class="practice-item">
+        <div class="practice-icon">🐮</div>
+        <div class="practice-text">
+          <h4>Desi Cow as Pillar</h4>
+          <p>Only gomutra and compost - nothing else. The desi cow is the foundation of everything we grow. No synthetic fertilizer. Ever.</p>
+        </div>
+      </div>
+      <div class="practice-item">
+        <div class="practice-icon">🌿</div>
+        <div class="practice-text">
+          <h4>Pest Management, not Killing</h4>
+          <p>We use repellents to manage pests - not kill them. Every creature has its role in the balance we are trying to restore.</p>
+        </div>
+      </div>
+      <div class="practice-item">
+        <div class="practice-icon">🌾</div>
+        <div class="practice-text">
+          <h4>Only What the Season Allows</h4>
+          <p>Nothing forced. Nothing artificial. We grow with the season - because that is when the food is most alive.</p>
+        </div>
+      </div>
+    </div>
+    <div class="rishi-card">
+      <h3>Rishi Krishi</h3>
+      <p>When Prithvi, Jal, Agni, Vayu, and Akasha are in harmony - the soil lives. When the soil lives, the food heals. When the food heals, so do we.</p>
+      <p>Natural farming teaches that health is not a product to be purchased. It flows naturally when all five elements are in balance.</p>
+      <p>Aarogya Bhoomi is our attempt to restore that balance - one farm at a time.</p>
+      <div class="rishi-tags">
+        <span class="rishi-tag">Living Soil</span>
+        <span class="rishi-tag">Zero Chemicals</span>
+        <span class="rishi-tag">Seasonal Only</span>
+        <span class="rishi-tag">Farmer Dignity</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 8: SEEDS ===== -->
+<section id="seeds">
+  <div class="section-label" style="color:var(--green-light);">LIVING HERITAGE</div>
+  <h2 class="seeds-title">Our Indigenous Seed Collection</h2>
+  <div class="seeds-strip">
+    <div class="seed-img"><img src="seed1.jpg" alt="Seed 1"></div>
+    <div class="seed-img"><img src="seed2.jpg" alt="Seed 2"></div>
+    <div class="seed-img"><img src="seed3.jpg" alt="Seed 3"></div>
+    <div class="seed-img"><img src="seed4.jpg" alt="Seed 4"></div>
+    <div class="seed-img"><img src="seed5.jpg" alt="Seed 5"></div>
+    <div class="seed-img"><img src="seed6.jpg" alt="Seed 6"></div>
+    <div class="seed-img"><img src="seed7.jpg" alt="Seed 7"></div>
+    <div class="seed-img"><img src="seed8.jpg" alt="Seed 8"></div>
+  </div>
+  <p class="seeds-caption">We are attempting to preserve and grow over 500+ indigenous varieties of veggies, fruits, herbs and spices.</p>
+</section>
+
+<!-- ===== SECTION 9: FARMER STORY ===== -->
+<section id="farmer">
+  <div class="farmer-content">
+    <div class="section-label" style="justify-content:center;">A DIFFERENT KIND OF PARTNERSHIP</div>
+    <h2 class="farmer-headline">Why does the farmer carry this alone?</h2>
+    <div class="farmer-body">
+      <p>Think about the person who grew what you ate today. He was in the field before the sun rose. He watched the sky nervously when the monsoon was late. He took loans to buy seeds - more loans when the harvest didn't cover the last ones.</p>
+      <p>And at the end of all that - he got paid less than what it cost him to grow.</p>
+      <h3 class="farmer-italic">What if this didn't have to be his burden alone?</h3>
+      <p>What if the people who eat the food also shared the responsibility of growing it? Not as charity. Not as sympathy. <strong>As equals.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 10: CO-FARMER MODEL ===== -->
+<section id="cofarmer">
+  <div class="cofarmer-card">
+    <span class="cofarmer-badge">🌱 ONLY 200 SLOTS AVAILABLE</span>
+    <h2 class="cofarmer-title">This is the Co-Farmer Model</h2>
+    <p class="cofarmer-body">You share the real cost of growing honest food - directly, with no middleman, no markup. We farm with full natural practices. Every week, fresh harvest reaches your home. Come to the farm. Watch seeds go into the ground. Harvest with your hands. Let your children touch the soil.</p>
+    <p class="cofarmer-bold">When the harvest is good, we celebrate together. When it isn't - we bear the loss together.</p>
+  </div>
+  <p class="cofarmer-footer">We want farming to become a dignified career - chosen with pride, not forced by circumstance. Every family that joins makes the farmer's path a little less lonely. Makes the soil a little more alive.</p>
+</section>
+
+<!-- ===== SECTION 11: OUR FARM - MARQUEE ===== -->
+<section id="farm">
+  <div class="farm-header">
+    <h2 class="farm-title">Our Farm and Activities</h2>
+  </div>
+  <div class="farm-marquee-wrap">
+    <div class="farm-track">
+      <!-- Original set -->
+      <div class="farm-img-item"><img src="farm1.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm2.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm3.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm4.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm5.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm6.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm7.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm8.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm9.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm10.jpg" alt="Farm"></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="farm-img-item"><img src="farm1.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm2.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm3.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm4.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm5.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm6.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm7.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm8.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm9.jpg" alt="Farm"></div>
+      <div class="farm-img-item"><img src="farm10.jpg" alt="Farm"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 12: COMPARISON TABLE ===== -->
+<section id="compare">
+  <div class="section-label">HONEST COMPARISON</div>
+  <h2 class="compare-headline">Market vegetables vs.<br>Aarogya Bhoomi</h2>
+  <p class="compare-sub">What you're actually bringing home.</p>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>WHAT YOU'RE COMPARING</th>
+        <th>🛒 MARKET VEGETABLES</th>
+        <th>🌿 AAROGYA BHOOMI</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>PURPOSE OF GROWING</td><td>Speed &amp; quantity</td><td>Nutrition &amp; taste</td></tr>
+      <tr><td>INPUTS USED</td><td>Chemical fertilizers &amp; pesticides - many banned in Europe</td><td>100% natural - desi cow gomutra with bio formulations only</td></tr>
+      <tr><td>HOW IT REACHES YOU</td><td>Cold storage, ripening chambers, chemical wax coating</td><td>Harvested and delivered - no storage, no treatment</td></tr>
+      <tr><td>AVAILABILITY</td><td>Same vegetables all year (forced, artificial)</td><td>Seasonal only - naturally grown</td></tr>
+      <tr><td>YOUR RELATIONSHIP</td><td>Anonymous. You don't know the soil or the farmer.</td><td>You know the farmer. You visit the farm. You trust what you eat.</td></tr>
+      <tr><td>WHAT YOUR CHILD EATS</td><td>Pesticide residues accumulating in small bodies</td><td>Clean, seasonal, alive - the way a child's body was designed</td></tr>
+      <tr><td>WHO BEARS FARMING RISK</td><td>Farmer alone, under crushing debt pressure</td><td>Shared between co-farmers and the farm</td></tr>
+      <tr><td>WHAT YOU'RE REALLY PAYING FOR</td><td>The appearance of freshness</td><td>Real food, honest farming, a future your children can eat from</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ===== SECTION 13: PLANS ===== -->
+<section id="plans">
+  <div class="section-label" style="justify-content:center;">Co-farmer Plans</div>
+  <h2 class="plans-headline">Choose your depth of connection</h2>
+  <div class="plans-intro">
+     <h2>A Farm of Your Own. Food for Your Family. A Connection with Nature.</h2>
+    <p>
+      Give your family the joy of growing, nurturing and harvesting
+      their own food. Become a co-farmer at Aarogya Bhoomi and
+      experience the beauty of natural farming, one season at a time.
+    </p>
+    <p>Most farmers don't grow food naturally-not because they don't want to, but because they can't afford the risk. Natural farming requires time, patience, and most importantly - a guaranteed buyer for the season.</p>
+    <p class="highlight">Without that assurance, farmers are forced to depend on chemicals for faster, predictable yields.</p>
+    <p class="highlight">At Aarogya Bhoomi, we change that. By committing to a season, you enable farmers to grow food the right way - slow, diverse, and chemical-free.</p>
+    <p>You don't just receive vegetables. You witness your food growing, understand the process, and become a co-farmer in the journey.</p>
+    <p>Backed by 50+ natural farming SOPs, this is food you can trust - because you've seen it grow.</p>
+  </div>
+  
+
+
+
+<section class="membership-section" id="memberships">
+
+  <div class="plans-grid">
+
+    <!-- BEEJ -->
+    <div class="plan-card">
+      <div class="plan-name">Beej</div>
+      <div class="plan-subtitle">A beautiful beginning to your family's farming journey.</div>
+      <div class="plan-duration">3 Months · 50 Yard Plot</div>
+      <div class="plan-price">₹13,500</div>
+      <div class="plan-subtitle">
+        Ideal for 2–3 family members
+      </div>
+      <ul class="plan-features">
+        <li>50-yard dedicated family plot</li>
+        <li>Natural farming guidance</li>
+        <li>Seasonal vegetables from your plot</li>
+        <li>Share of community plantation produce</li>
+        <li>Family farm days and activities</li>
+        <li>Members' WhatsApp community</li>
+      </ul>
+      <div class="plan-total">
+        <strong>Membership: ₹12,000</strong>
+        <span>Setup fee: ₹1,500</span>
+        <span>Total payable: ₹13,500</span>
+      </div>
+      <a href="BEEJ_RAZORPAY_LINK" class="plan-btn plan-btn-outline">
+        JOIN BEEJ
+      </a>
+    </div>
+
+    <!-- BEEJ PLUS -->
+    <div class="plan-card">
+      <div class="plan-name">Beej Plus</div>
+      <div class="plan-subtitle">Stay longer and make farming part of your family routine.</div>
+      <div class="plan-duration">6 Months · 50 Yard Plot</div>
+      <div class="plan-price">₹22,800</div>
+      <div class="plan-subtitle">
+        Ideal for 2–3 family members
+      </div>
+      <ul class="plan-features">
+        <li>50-yard dedicated family plot</li>
+        <li>Natural farming guidance</li>
+        <li>Seasonal vegetables from your plot</li>
+        <li>Share of community plantation produce</li>
+        <li>Family farm days and activities</li>
+        <li>Members' WhatsApp community</li>
+        <li>Plot setup fee completely waived</li>
+        <li>Additional 5% membership discount</li>
+      </ul>
+      <div class="plan-total">
+        <strong>Original price: ₹24,000</strong>
+        <span>5% discount: ₹1,200</span>
+        <span>Total payable: ₹22,800</span>
+      </div>
+      <a href="BEEJ_PLUS_RAZORPAY_LINK" class="plan-btn plan-btn-outline">
+        JOIN BEEJ PLUS
+      </a>
+    </div>
+
+    <!-- FASAL -->
+    <div class="plan-card">
+      <div class="plan-name">Fasal</div>
+      <div class="plan-subtitle">More space for your family to grow and harvest together.</div>
+      <div class="plan-duration">3 Months · 100 Yard Plot</div>
+      <div class="plan-price">₹21,500</div>
+      <div class="plan-subtitle">
+        Ideal for 4–5 family members
+      </div>
+      <ul class="plan-features">
+        <li>100-yard dedicated family plot</li>
+        <li>Natural farming guidance</li>
+        <li>Seasonal vegetables from your plot</li>
+        <li>Share of community plantation produce</li>
+        <li>Family farm days and activities</li>
+        <li>Members' WhatsApp community</li>
+      </ul>
+      <div class="plan-total">
+        <strong>Membership: ₹19,500</strong>
+        <span>Setup fee: ₹2,000</span>
+        <span>Total payable: ₹21,500</span>
+      </div>
+      <a href="FASAL_RAZORPAY_LINK" class="plan-btn plan-btn-filled">
+        JOIN FASAL
+      </a>
+    </div>
+
+    <!-- FASAL PLUS -->
+    <div class="plan-card featured">
+      <span class="plan-badge">POPULAR CHOICE</span>
+      <div class="plan-name">Fasal Plus</div>
+      <div class="plan-subtitle">Six months of a richer farm experience for your family.</div>
+      <div class="plan-duration">6 Months · 100 Yard Plot</div>
+      <div class="plan-price">₹35,100</div>
+      <div class="plan-subtitle">
+        Ideal for 4–5 family members
+      </div>
+      <ul class="plan-features">
+        <li>100-yard dedicated family plot</li>
+        <li>Natural farming guidance</li>
+        <li>Seasonal vegetables from your plot</li>
+        <li>Share of community plantation produce</li>
+        <li>Family farm days and activities</li>
+        <li>Members' WhatsApp community</li>
+        <li>Plot setup fee completely waived</li>
+        <li>Additional 10% membership discount</li>
+      </ul>
+      <div class="plan-total">
+        <strong>Original price: ₹39,000</strong>
+        <span>10% discount: ₹3900</span>
+        <span>Total payable: ₹35,100</span>
+      </div>
+      <a href="FASAL_PLUS_RAZORPAY_LINK" class="plan-btn plan-btn-outline">
+        JOIN FASAL PLUS
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+<!-- ===== SECTION 14: TESTIMONIALS ===== -->
+<section id="testimonials">
+  <div class="section-label">WHY FAMILIES JOIN</div>
+  <h2 class="test-headline">Food stops being a product.<br>It becomes a relationship.</h2>
+  <div class="test-grid">
+    <div class="test-item">
+      <p class="test-quote">"My daughter actually asks for vegetables now. She visited the farm once and now tells her friends she has her own carrot plant."</p>
+      <p class="test-name">Priya Sharma</p>
+      <p class="test-role">Co-Farmer, Gurgaon · 8 months</p>
+    </div>
+    <div class="test-item">
+      <p class="test-quote">"After years of knowing our food was wrong but not knowing what to do - this felt like finally doing something. The tomatoes alone changed my mind about everything."</p>
+      <p class="test-name">Rohit &amp; Kavya Mehta</p>
+      <p class="test-role">Co-Farmers, Noida · 1 year</p>
+    </div>
+    <div class="test-item">
+      <p class="test-quote">"My 7-year-old harvested spinach with his own hands. He ate every leaf without complaint. That has never happened before."</p>
+      <p class="test-name">Ananya Krishnan</p>
+      <p class="test-role">Co-Farmer, Delhi · 5 months</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 15: CTA BANNER ===== -->
+<section id="cta">
+  <h2 class="cta-headline">The poison stops<br>with your generation.</h2>
+  <p class="cta-sub">If you're the sensitive one - the one who actually wants to do something - this is your invitation. Join families who chose responsibility over complaint.</p>
+  <a href="#plans" class="btn-cta-outline">COMPARE PLANS</a>
+</section>
+
+<!-- ===== SECTION 16: JOIN FORM ===== -->
+<section id="join">
+  <div class="section-label" style="justify-content:center;color:var(--green-light);">BECOME A CO-FARMER</div>
+  <h2 class="join-title">Join Aarogya Bhoomi</h2>
+  <p class="join-sub">Take the first step toward real food, living soil, and a farm that belongs to your family. Fill in our form and we'll get back to you within 24 hours.</p>
+  <a href="https://forms.gle/s7evFqxFEJ8UdGxU6" target="_blank" class="btn-join">CLICK TO FILL THE FORM →</a>
+</section>
+
+<!-- ===== SECTION 17: HOW FOOD IS GROWN ===== -->
+<section id="howgrown">
+  <div class="section-label" style="color:var(--green-light);">FROM THE SOIL TO YOUR TABLE</div>
+  <h2 class="howgrown-title">How your food is grown - naturally.</h2>
+  <p class="howgrown-sub">No shortcuts. No storage. No pretending. Just the honest journey from seed to plate.</p>
+  <div class="howgrown-grid">
+    <div class="howgrown-item">
+      <div class="icon">🌿</div>
+      <h3>Seed Selection</h3>
+      <p>Indigenous, open-pollinated seeds chosen for nutrition and flavour, not appearance.</p>
+    </div>
+    <div class="howgrown-item featured">
+      <div class="icon">🌍</div>
+      <h3>Soil Preparation</h3>
+      <p>Gomutra, compost, and deep care. We feed the soil - not the plant. Living soil does the rest.</p>
+    </div>
+    <div class="howgrown-item">
+      <div class="icon">🌾</div>
+      <h3>Natural Growth</h3>
+      <p>Grown slowly with the season. Pest management, not killing. Every creature plays its role.</p>
+    </div>
+    <div class="howgrown-item">
+      <div class="icon">🚚</div>
+      <h3>Fresh to Your Door</h3>
+      <p>Harvested and delivered - no cold storage, no wax, no ripening chambers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 18: SOIL KEEPERS ===== -->
+<section id="team">
+  <div class="section-label">MEET THE VISIONARIES</div>
+  <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;margin-bottom:6px;">The Soil Keepers</h2>
+  <p style="font-size:1rem;color:#5a3e28;font-style:italic;">From living soil to healthy food - naturally.</p>
+  <div class="team-grid">
+    <div class="team-card"><img src="team1.jpg" alt="Meet the Visionaries"></div>
+    <div class="team-card"><img src="team2.jpg" alt="Sanchit Aggarwal"></div>
+    <div class="team-card"><img src="team3.jpg" alt="Arunima Sharma"></div>
+    <div class="team-card"><img src="team4.jpg" alt="Tripti Tayal"></div>
+  </div>
+</section>
+
+<!-- ===== SECTION 19: STAY CONNECTED ===== -->
+<section id="connect">
+  <div class="connect-box">
+    <h2 class="connect-title">Stay Connected with the Farm</h2>
+    <p class="connect-sub">Join our WhatsApp community for weekly farm updates, seasonal recipes, and real conversations about food and soil. Watch us grow on YouTube. Follow the daily life of the farm on Instagram.</p>
+    <div class="connect-btns">
+      <a href="https://chat.whatsapp.com/LZJ4VWbZrvA44EUslGDHTS?mode=gi_t" target="_blank" class="btn-wa">💬 Join WhatsApp Community</a>
+      <a href="https://www.youtube.com/@VishuddhiVibes" target="_blank" class="btn-yt">▶ YouTube Channel</a>
+      <a href="https://www.instagram.com/thynaahealthynaturally/" target="_blank" class="btn-ig">📷 Instagram</a>
+    </div>
+  </div>
+</section>
+<!-- ===== SECTION 20: FREE RESOURCE ===== -->
+<section id="resource">
+  <div class="resource-grid">
+    
+    <!-- LEFT CONTENT -->
+    <div>
+      <div class="section-label" style="color:var(--green-light);">FREE RESOURCE</div>
+      <h2 class="resource-title">Cook Healthy, Eat Fresh<br>at Your Home</h2>
+      <p class="resource-sub">
+       A practical recipe book to help you create simple, nutritious, and delicious meals - even if you’re just starting out in the kitchen. Learn easy cooking techniques, ingredient selection, and natural, wholesome recipes you can try this weekend.
+      </p>
+    </div>
+
+    <!-- RIGHT CTA (Moved Here) -->
+    <div class="resource-cta">
+      <a href="https://forms.gle/4uY3KwMACXqEJdZr6" target="_blank" class="btn-gold big-btn">
+        DOWNLOAD FREE GUIDE →
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ===== SECTION 21: FAQ ===== -->
+<section id="faq">
+
+  <div class="section-label">COMMON QUESTIONS</div>
+
+  <h2 class="faq-headline">
+    Everything you want to know before you join.
+  </h2>
+
+  <!-- 1. CO-FARMER MODEL -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      What exactly is the Co-Farmer model?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      As a Co-Farmer, your family gets a dedicated rental plot at
+      Aarogya Bhoomi. Our farm team prepares and tends the land
+      using natural farming practices, while you get to participate
+      in growing, learning and harvesting.
+
+      You also receive an equal family share of produce from our
+      community plantations as it matures, along with access to
+      farm activities and our members' community.
+
+      It is about becoming part of the farming journey, not simply
+      purchasing vegetables.
+    </div>
+  </div>
+
+  <!-- 2. LOCATION -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      Where is Aarogya Bhoomi located?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      Aarogya Bhoomi is located on Sohna Road, Gurgaon, Haryana.
+
+      Members can visit the farm on their own or during scheduled
+      farm activities and events. We share farm updates regularly
+      through our members' WhatsApp group.
+    </div>
+  </div>
+
+  <!-- 3. MEMBERSHIP PLANS -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      What membership plans are available?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      We offer four Co-Farmer memberships:
+
+      Beej: 50-yard plot for 3 months, ideal for 2–3 family members.
+
+      Beej Plus: 50-yard plot for 6 months, ideal for 2–3 family
+      members.
+
+      Fasal: 100-yard plot for 3 months, ideal for 4–5 family members.
+
+      Fasal Plus: 100-yard plot for 6 months, ideal for 4–5 family
+      members.
+
+      Both Plus plans include a waived plot setup fee and an
+      additional 5% discount on the membership fee.
+
+      Please refer to the membership plans above for the current
+      prices and total payable amounts.
+    </div>
+  </div>
+
+  <!-- 4. SETUP FEE -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      What is the plot setup fee?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      The 3-month Beej membership has a one-time setup fee of
+      ₹1,500 for a 50-yard plot.
+
+      The 3-month Fasal membership has a one-time setup fee of
+      ₹2,000 for a 100-yard plot.
+
+      The setup fee covers soil preparation, farming beds, a
+      basic tool kit, your family's plot signboard and a welcome
+      walk.
+
+      For both six-month Plus memberships, the setup fee is
+      completely waived.
+    </div>
+  </div>
+
+  <!-- 5. VEGETABLES -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      What vegetables will we receive from our plot?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      We grow seasonal vegetables using indigenous (desi) seeds
+      and natural farming practices.
+
+      Your family can participate in growing and harvesting
+      vegetables from its dedicated plot. What grows depends on
+      the season, weather, soil conditions and crop availability.
+
+      We do not promise a fixed quantity or a particular variety
+      of vegetables.
+    </div>
+  </div>
+
+  <!-- 6. COMMUNITY PLANTATION -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      What is included in the community plantation?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      Our shared community plantation includes ginger, fresh
+      turmeric, papaya, banana, lemon, chilli, lemongrass,
+      marigold, rose and other seasonal plants.
+
+      Produce from the community plantation is shared equally
+      among active member families as it matures and becomes
+      available for harvesting, irrespective of plot size.
+
+      Some fruit crops, such as papaya and banana, take time
+      to mature. Their availability will depend on the growth
+      and harvest cycle.
+    </div>
+  </div>
+
+  <!-- 7. WEEKLY BOX / FIXED QUANTITY -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      Do I get a fixed quantity of vegetables every week?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      No. Farming depends on seasons, weather and crop health.
+      We cannot guarantee a fixed quantity or kind of produce
+      every week.
+
+      You receive produce from your own plot as it is harvested,
+      along with your family's equal share of community
+      plantation produce on announced harvest days.
+
+      We share weekly farm updates so you know what has been
+      harvested and how community produce has been distributed.
+    </div>
+  </div>
+
+  <!-- 8. FARM VISITS -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      Can we visit the farm and participate in activities?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      Absolutely! We encourage families to visit and experience
+      natural farming.
+
+      You can participate in activities such as sowing,
+      harvesting, composting and seed saving, depending on
+      the farm schedule.
+
+      Each visit can include up to 4 guests for a 50-yard plot
+      or up to 6 guests for a 100-yard plot.
+    </div>
+  </div>
+
+  <!-- 9. DELIVERY -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      Is weekly home delivery included in the membership?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      Home delivery is an optional paid add-on and is not
+      included in the membership fee.
+
+      Delivery costs ₹250 per week, payable in advance for
+      your selected duration.
+
+      For reference:
+      12 weeks: ₹3,000
+      24 weeks: ₹6,000
+
+      Delivery is available within approximately 20–25 km
+      of Aarogya Bhoomi, Sohna Road, Gurgaon, on designated
+      delivery days across Delhi-NCR.
+
+      Additional delivery charges may apply for locations
+      beyond 25 km.
+
+      If you do not opt for home delivery, you can collect
+      your produce directly from the farm.
+    </div>
+  </div>
+
+  <!-- 10. MEMBERSHIP START -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      When does my membership begin?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      We prepare your plot and aim to hand it over within
+      21 days of receiving your payment.
+
+      Your membership period begins on the actual plot
+      handover date, not the payment date.
+
+      Beej and Fasal memberships run for 3 months, while
+      Beej Plus and Fasal Plus memberships run for 6 months.
+    </div>
+  </div>
+
+  <!-- 11. RENEWAL -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      Can I renew my membership after the first term?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      Yes. You can repeat your membership for another term
+      at the applicable monthly membership rate.
+
+      No new plot setup fee will be charged when you renew
+      your membership.
+    </div>
+  </div>
+
+  <!-- 12. FOUNDING FAMILIES -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      What are the benefits of joining as a founding family?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      We are welcoming our first 20 Co-Farmer families as
+      founding members.
+
+      Founding families receive:
+      <ul>
+        <li>Their monthly membership rate remains unchanged
+            for 12 months after the first term.</li>
+        <li>Priority to choose their plot location.</li>
+        <li>Their family's name on our Founding Families wall.</li>
+        <li>An invitation to our Founders' Day celebration
+            with the farm team.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 13. CANCELLATION AND REFUNDS -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      Can I cancel my membership or get a refund?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      We understand that plans can change. Our refund policy
+      is designed to be fair to both families and the farm.
+
+      <strong>Within 7 days of payment:</strong>
+      You can request a full refund. We begin plot setup
+      work only from day 8.
+
+      <strong>If you leave during your first term:</strong>
+      The month currently in progress is not refundable.
+      We refund 50% of your unused full months.
+
+      If we are able to allot your plot to another family,
+      we refund 100% of your unused full months after
+      deducting a 10% administrative fee.
+
+      <strong>After your first term:</strong>
+      You can discontinue with 30 days' notice, without
+      an exit penalty.
+
+      If we are unable to provide your designated plot,
+      we refund the unused membership period.
+    </div>
+  </div>
+
+  <!-- 14. TRANSFER -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      Can I transfer my membership to another family?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      Yes. You may nominate another family to take over
+      the remaining membership period, subject to our
+      approval.
+
+      There is no transfer charge for an approved replacement
+      family.
+    </div>
+  </div>
+
+  <!-- 15. LAND OWNERSHIP -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      Do I own the plot or the trees growing on it?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      No. Membership provides a licence to use a designated
+      farming area and participate in farm activities.
+      It does not provide ownership or a lease of the land,
+      trees or structures.
+
+      When your membership ends, the plot returns to the
+      farm. You may harvest ripe produce from your plot
+      until your last paid day. Crops still in the ground
+      and all trees remain with the farm.
+    </div>
+  </div>
+
+  <!-- 16. ORGANIC CERTIFICATION -->
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      Are your vegetables certified organic?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      We follow natural farming practices and do not claim
+      organic certification.
+
+      We are happy to share our farming input log with
+      members who wish to understand how we grow food.
+      You are also welcome to experience our farming
+      practices during your visits.
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <img src="logo.png" alt="Logo" style="height:40px;width:40px;object-fit:cover;border-radius:50%;border:2px solid var(--green-light);">
+        <span class="footer-logo-text">Aarogya<span>Bhoomi</span></span>
+      </div>
+      <p class="footer-tagline">A brand of Thynaa Healthy Naturally Private Limited</p>
+      <p class="footer-desc">Where we heal the soil with love and care - so it can heal all of us. One farm, one family, one season at a time.</p>
+    </div>
+    <div class="footer-col">
+      <h4>EXPLORE</h4>
+      <ul>
+        <li><a href="#about">The Problem</a></li>
+        <li><a href="#ourway">Our Way</a></li>
+        <li><a href="#cofarmer">Co-Farmer Model</a></li>
+        <li><a href="#plans">Farm Share Plans</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>CONNECT</h4>
+      <ul>
+        <li><a href="https://chat.whatsapp.com/KRHdGIo6HxWDbIVMe3bR22?mode=gi_t" target="_blank">WhatsApp Community</a></li>
+        <li><a href="https://www.youtube.com/@VishuddhiVibes" target="_blank">YouTube</a></li>
+        <li><a href="https://www.instagram.com/thynaahealthynaturally/" target="_blank">Instagram</a></li>
+        <li><a href="https://forms.gle/CcwmLDvwbN7JA8e49" target="_blank">Free Balcony Guide</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>VISIT</h4>
+      <ul>
+        <li><a href="#plans">Become a Co-Farmer</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://docs.google.com/document/d/1U4Rm0BgFMNKtFZZdkzu-1YzaP3cltAeWkIKZfdtlkFw/edit?usp=sharing" target="_blank">Privacy Policy</a></li>
+        <li><a href="#join">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Aarogya Bhoomi · Thynaa Healthy Naturally Private Limited · All rights reserved.</p>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/thynaahealthynaturally/" target="_blank" class="social-btn">📷</a>
+      <a href="https://www.youtube.com/@VishuddhiVibes" target="_blank" class="social-btn">▶</a>
+      <a href="https://chat.whatsapp.com/KRHdGIo6HxWDbIVMe3bR22?mode=gi_t" target="_blank" class="social-btn">💬</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// SLIDER
+let cur = 0, total = 3;
+let auto = setInterval(() => changeSlide(1), 5000);
+function changeSlide(d) { goToSlide((cur + d + total) % total); }
+function goToSlide(n) {
+  document.getElementById('slide-' + cur).classList.remove('active');
+  document.querySelectorAll('.slider-dot')[cur].classList.remove('active');
+  cur = n;
+  document.getElementById('slide-' + cur).classList.add('active');
+  document.querySelectorAll('.slider-dot')[cur].classList.add('active');
+  clearInterval(auto);
+  auto = setInterval(() => changeSlide(1), 5000);
+}
+// MOBILE MENU
+function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+// FAQ
+function toggleFaq(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+</script>
+</body>
+</html>
