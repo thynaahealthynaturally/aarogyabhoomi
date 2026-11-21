@@ -164,6 +164,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--cream);bor
 .seed-img img{width:100%;height:100%;object-fit:cover;}
 .seeds-caption{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:rgba(255,255,255,0.5);text-align:center;}
 
+
+/* ============ WINTER VEGETABLE PLAN ============ */
+#winter-crops{padding:80px;background:#f0eadc;}
+.winter-crops-inner{max-width:1120px;margin:0 auto;}
+.winter-crops-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,3rem);font-weight:800;line-height:1.2;margin-bottom:14px;color:var(--dark-brown);}
+.winter-crops-intro{max-width:760px;font-size:1rem;line-height:1.75;color:#5a3e28;margin-bottom:32px;}
+.winter-crop-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+.winter-crop-group{background:#fffaf1;border:1px solid rgba(58,107,69,0.16);padding:24px;border-radius:4px;}
+.winter-crop-group h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--green-dark);margin-bottom:14px;}
+.winter-crop-tags{display:flex;flex-wrap:wrap;gap:9px;}
+.winter-crop-tag{background:#e7efdf;color:#31583a;padding:8px 13px;border-radius:20px;font-size:.88rem;}
+.winter-crops-note{font-size:.84rem;line-height:1.6;color:#705b43;margin-top:24px;font-style:italic;}
+
 /* ============ SECTION 9: FARMER STORY ============ */
 #farmer{padding:80px 80px;background:var(--cream);}
 .farmer-content{max-width:780px;margin:0 auto;text-align:center;}
@@ -691,12 +704,13 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
 @media(max-width:900px){
   nav .nav-links,nav .nav-join{display:none;}
   .hamburger{display:flex;}
-  #banner,#about,#stats,#problems,#philosophy,#ourway,#seeds,#farmer,#cofarmer,#compare,#plans,#testimonials,#cta,#join,#howgrown,#team,#connect,#resource,#faq,footer{padding:50px 24px;}
+  #banner,#about,#stats,#problems,#philosophy,#ourway,#seeds,#winter-crops,#farmer,#cofarmer,#compare,#plans,#testimonials,#cta,#join,#howgrown,#team,#connect,#resource,#faq,footer{padding:50px 24px;}
   .farm-header{padding:0 24px;}
   .philosophy-grid,.ourway-grid,.resource-grid,.footer-grid{grid-template-columns:1fr;gap:32px;}
   .stats-grid{grid-template-columns:1fr;}
   .stat-item{border-right:none !important;border-bottom:1px solid rgba(44,31,14,0.15);padding:24px 0;}
   .problems-grid,.howgrown-grid{grid-template-columns:1fr;}
+  .winter-crop-groups{grid-template-columns:1fr;}
   .plans-grid{grid-template-columns:1fr;max-width:100%;}
   .test-grid{grid-template-columns:1fr;}
   .test-item{border-right:none !important;padding:0 0 30px;margin-bottom:20px;}
@@ -794,7 +808,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
 <!-- ===== SECTION 2: ORANGE BANNER ===== -->
 <section id="banner">
   <h2 class="banner-headline">No Synthetic Shortcuts.<br>Seasonal Growing.<br><span class="green">Natural Farming.</span></h2>
-  <p class="banner-sub">Grown with indigenous seeds and natural farming practices in living soil. Freshly harvested for members, with optional weekly home delivery.</p>
+  <p class="banner-sub">Grown with indigenous seeds and natural farming practices in living soil. Freshly harvested for members and delivered to your home every week.</p>
 </section>
 
 <!-- ===== SECTION 3: ABOUT ===== -->
@@ -966,7 +980,44 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
   <p class="seeds-caption">We are working to preserve and grow a diverse collection of indigenous vegetables, fruits, herbs and spices.</p>
 </section>
 
-<!-- ===== SECTION 9: FARMER STORY ===== -->
+
+<!-- ===== SECTION 9: PLANNED WINTER VEGETABLES ===== -->
+<section id="winter-crops">
+  <div class="winter-crops-inner">
+    <div class="section-label">GROWING WITH THE SEASON</div>
+    <h2 class="winter-crops-title">A Taste of Winter at Aarogya Bhoomi</h2>
+    <p class="winter-crops-intro">Here is a glimpse of the vegetables and greens we are planning to grow at the farm this winter. From familiar seasonal favourites to a few interesting greens, our aim is to bring variety, freshness and a closer connection to the changing seasons.</p>
+    <div class="winter-crop-groups">
+      <div class="winter-crop-group">
+        <h3>Leafy Greens & Herbs</h3>
+        <div class="winter-crop-tags">
+          <span class="winter-crop-tag">Bhatua</span><span class="winter-crop-tag">Amaranthus</span><span class="winter-crop-tag">Coriander</span><span class="winter-crop-tag">Methi</span><span class="winter-crop-tag">Kasuri Methi</span><span class="winter-crop-tag">Palak (Spinach)</span><span class="winter-crop-tag">Water Spinach</span><span class="winter-crop-tag">Pak Choi</span><span class="winter-crop-tag">Kale</span><span class="winter-crop-tag">Chinese Cabbage</span><span class="winter-crop-tag">Mustard Greens</span>
+        </div>
+      </div>
+      <div class="winter-crop-group">
+        <h3>Root & Bulb Vegetables</h3>
+        <div class="winter-crop-tags">
+          <span class="winter-crop-tag">Carrot</span><span class="winter-crop-tag">Beetroot</span><span class="winter-crop-tag">Radish</span><span class="winter-crop-tag">Knol Khol</span><span class="winter-crop-tag">Turnip</span><span class="winter-crop-tag">Onion</span>
+        </div>
+      </div>
+      <div class="winter-crop-group">
+        <h3>Winter Favourites</h3>
+        <div class="winter-crop-tags">
+          <span class="winter-crop-tag">Cauliflower</span><span class="winter-crop-tag">Cabbage</span><span class="winter-crop-tag">Broccoli</span>
+        </div>
+      </div>
+      <div class="winter-crop-group">
+        <h3>Other Seasonal Vegetables</h3>
+        <div class="winter-crop-tags">
+          <span class="winter-crop-tag">Tomato</span><span class="winter-crop-tag">Zucchini</span><span class="winter-crop-tag">Green Peas</span><span class="winter-crop-tag">Beans</span>
+        </div>
+      </div>
+    </div>
+    <p class="winter-crops-note">This is our planned crop list, not a guaranteed harvest list. Actual varieties, harvest quantities and availability will depend on weather, crop cycles and growing conditions through the season.</p>
+  </div>
+</section>
+
+<!-- ===== SECTION 10: FARMER STORY ===== -->
 <section id="farmer">
   <div class="farmer-content">
     <div class="section-label" style="justify-content:center;">A DIFFERENT KIND OF PARTNERSHIP</div>
@@ -985,7 +1036,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
   <div class="cofarmer-card">
     <span class="cofarmer-badge">🌱 ONLY 20 FOUNDING FAMILY MEMBERSHIPS</span>
     <h2 class="cofarmer-title">This is the Co-Farmer Model</h2>
-    <p class="cofarmer-body">You share the cost of growing food through a dedicated family plot. Our farm team tends the land using natural farming practices. Visit the farm, watch seeds go into the ground, take part in harvesting and let your children experience the soil. Produce can be collected at the farm; optional weekly home delivery is available at an additional charge.</p>
+    <p class="cofarmer-body">You share the cost of growing food through a dedicated family plot. Our farm team tends the land using natural farming practices. Visit the farm, watch seeds go into the ground, take part in harvesting and let your children experience the soil. Your membership includes one scheduled weekly home delivery within the standard service area, so your family can enjoy its harvest at home.</p>
     <p class="cofarmer-bold">When the harvest is good, we celebrate together. When it isn't - we bear the loss together.</p>
   </div>
   <p class="cofarmer-footer">We want farming to become a dignified career - chosen with pride, not forced by circumstance. Every family that joins makes the farmer's path a little less lonely. Makes the soil a little more alive.</p>
@@ -1041,7 +1092,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
     <tbody>
       <tr><td>PURPOSE OF GROWING</td><td>Speed &amp; quantity</td><td>Nutrition &amp; taste</td></tr>
       <tr><td>INPUTS USED</td><td>Chemical fertilizers &amp; pesticides - many banned in Europe</td><td>Natural farming inputs and practices, as described in our farm updates</td></tr>
-      <tr><td>HOW IT REACHES YOU</td><td>Handling and storage practices vary across suppliers</td><td>Harvested for members; collect at the farm or choose optional paid delivery</td></tr>
+      <tr><td>HOW IT REACHES YOU</td><td>Handling and storage practices vary across suppliers</td><td>Harvested for members and delivered home every week</td></tr>
       <tr><td>AVAILABILITY</td><td>Same vegetables all year (forced, artificial)</td><td>Seasonal only - naturally grown</td></tr>
       <tr><td>YOUR RELATIONSHIP</td><td>Anonymous. You don't know the soil or the farmer.</td><td>You know the farmer. You visit the farm. You trust what you eat.</td></tr>
       <tr><td>WHAT YOUR CHILD LEARNS</td><td>Food often arrives without a direct connection to its source</td><td>Children can see how food is grown and learn about soil, seasons and farming</td></tr>
@@ -1067,7 +1118,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
     <p class="highlight">Without that assurance, farmers are forced to depend on chemicals for faster, predictable yields.</p>
     <p class="highlight">At Aarogya Bhoomi, your seasonal commitment helps support a more planned relationship between the farm and the families who participate in it.</p>
     <p>You don't just receive vegetables. You witness your food growing, understand the process, and become a co-farmer in the journey.</p>
-    <p class="highlight">Harvest quantities and varieties are seasonal and indicative, not guaranteed. Weekly home delivery is optional and charged separately at ₹250 per week.</p>
+    <p class="highlight">Harvest quantities and varieties are seasonal and indicative, not guaranteed. Every membership includes one scheduled weekly home delivery within approximately 20–25 km of Aarogya Bhoomi, Sohna Road, Gurgaon.</p>
     <p>We share our farming practices and updates so you can understand how your family's food is grown.</p>
   </div>
   
@@ -1083,7 +1134,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
       <div class="plan-name">Beej</div>
       <div class="plan-subtitle">A beautiful beginning to your family's farming journey.</div>
       <div class="plan-duration">3 Months · 50 Yard Plot</div>
-      <div class="plan-price">₹13,500</div>
+      <div class="plan-price">₹16,500</div>
       <div class="plan-subtitle">
         Ideal for 2–3 family members
       </div>
@@ -1094,11 +1145,13 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
         <li>Share of community plantation produce</li>
         <li>Family farm days and activities</li>
         <li>Members' WhatsApp community</li>
+        <li>Weekly home delivery within 20–25 km</li>
       </ul>
       <div class="plan-total">
-        <strong>Membership: ₹12,000</strong>
+        <strong>Farm membership: ₹15,000</strong>
         <span>Setup fee: ₹1,500</span>
-        <span>Total payable: ₹13,500</span>
+        <span>Weekly home delivery included</span>
+        <span>Total package price: ₹16,500</span>
       </div>
       <a href="https://pages.razorpay.com/Beej" class="plan-btn plan-btn-outline">
         JOIN BEEJ
@@ -1110,7 +1163,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
       <div class="plan-name">Beej Plus</div>
       <div class="plan-subtitle">Stay longer and make farming part of your family routine.</div>
       <div class="plan-duration">6 Months · 50 Yard Plot</div>
-      <div class="plan-price">₹22,800</div>
+      <div class="plan-price">₹28,500</div>
       <div class="plan-subtitle">
         Ideal for 2–3 family members
       </div>
@@ -1121,14 +1174,16 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
         <li>Share of community plantation produce</li>
         <li>Family farm days and activities</li>
         <li>Members' WhatsApp community</li>
+        <li>Weekly home delivery within 20–25 km</li>
         <li>Plot setup fee completely waived</li>
         <li>5% discount on the six-month membership</li>
       </ul>
       <div class="plan-total">
-        <strong>Original price: ₹24,000</strong>
-        <span>No Setup fee</span>
-        <span>Additional 5% discount: ₹1,200</span>
-        <span>Total payable: ₹22,800</span>
+        <strong>Farm membership: ₹30,000</strong>
+        <span>5% membership discount: ₹1,500</span>
+        <span>No setup fee</span>
+        <span>Weekly home delivery included</span>
+        <span>Total package price: ₹28,500</span>
       </div>
       <a href="https://rzp.io/rzp/Beejplus" class="plan-btn plan-btn-outline">
         JOIN BEEJ PLUS
@@ -1140,7 +1195,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
       <div class="plan-name">Fasal</div>
       <div class="plan-subtitle">More space for your family to grow and harvest together.</div>
       <div class="plan-duration">3 Months · 100 Yard Plot</div>
-      <div class="plan-price">₹21,500</div>
+      <div class="plan-price">₹24,500</div>
       <div class="plan-subtitle">
         Ideal for 4–5 family members
       </div>
@@ -1151,11 +1206,13 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
         <li>Share of community plantation produce</li>
         <li>Family farm days and activities</li>
         <li>Members' WhatsApp community</li>
+        <li>Weekly home delivery within 20–25 km</li>
       </ul>
       <div class="plan-total">
-        <strong>Membership: ₹19,500</strong>
+        <strong>Farm membership: ₹22,500</strong>
         <span>Setup fee: ₹2,000</span>
-        <span>Total payable: ₹21,500</span>
+        <span>Weekly home delivery included</span>
+        <span>Total package price: ₹24,500</span>
       </div>
       <a href="https://pages.razorpay.com/Fasal" class="plan-btn plan-btn-filled">
         JOIN FASAL
@@ -1168,7 +1225,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
       <div class="plan-name">Fasal Plus</div>
       <div class="plan-subtitle">Six months of a richer farm experience for your family.</div>
       <div class="plan-duration">6 Months · 100 Yard Plot</div>
-      <div class="plan-price">₹35,100</div>
+      <div class="plan-price">₹40,500</div>
       <div class="plan-subtitle">
         Ideal for 4–5 family members
       </div>
@@ -1179,14 +1236,16 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
         <li>Share of community plantation produce</li>
         <li>Family farm days and activities</li>
         <li>Members' WhatsApp community</li>
+        <li>Weekly home delivery within 20–25 km</li>
         <li>Plot setup fee completely waived</li>
         <li>Special 10% discount on the six-month membership</li>
       </ul>
       <div class="plan-total">
-        <strong>Original price: ₹39,000</strong>
-        <span>No Setup fee</span>
-        <span>Additional 10% discount: ₹3,900</span>
-        <span>Total payable: ₹35,100</span>
+        <strong>Farm membership: ₹45,000</strong>
+        <span>10% membership discount: ₹4,500</span>
+        <span>No setup fee</span>
+        <span>Weekly home delivery included</span>
+        <span>Total package price: ₹40,500</span>
       </div>
       <a href="https://rzp.io/rzp/Fasalplus" class="plan-btn plan-btn-outline">
         JOIN FASAL PLUS
@@ -1260,7 +1319,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
     <div class="howgrown-item">
       <div class="icon">🚚</div>
       <h3>Harvest and Collection</h3>
-      <p>Harvested for members to collect at the farm, with optional paid weekly home delivery where available.</p>
+      <p>Harvested for members and delivered home every week within our standard service area.</p>
     </div>
   </div>
 </section>
@@ -1378,7 +1437,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
       Fasal Plus: 100-yard plot for 6 months, ideal for 4–5 family
       members.
 
-      Both Plus plans include a waived plot setup fee. Beej Plus receives a 5% membership discount (₹1,200), bringing the total to ₹22,800. Fasal Plus receives a special 10% membership discount (₹3,900), bringing the total to ₹35,100. Fasal Plus is marked as our Popular Choice.
+      Both Plus plans include a waived plot setup fee. Beej Plus receives a 5% membership discount (₹1,500), bringing the farm membership amount to ₹28,500. Fasal Plus receives a special 10% membership discount (₹4,500), bringing the farm membership amount to ₹40,500. Fasal Plus is marked as our Popular Choice.
     </div>
   </div>
 
@@ -1487,25 +1546,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
       <span class="faq-icon">+</span>
     </button>
     <div class="faq-a">
-      Home delivery is an optional paid add-on and is not
-      included in the membership fee.
-
-      Delivery costs ₹250 per week, payable in advance for
-      your selected duration.
-
-      For reference:
-      12 weeks: ₹3,000
-      24 weeks: ₹6,000
-
-      Delivery is available within approximately 20–25 km
-      of Aarogya Bhoomi, Sohna Road, Gurgaon, on designated
-      delivery days across Delhi-NCR.
-
-      Additional delivery charges may apply for locations
-      beyond 25 km.
-
-      If you do not opt for home delivery, you can collect
-      your produce directly from the farm.
+      Weekly home delivery is included in every membership for one scheduled delivery per week within approximately 20–25 km of Aarogya Bhoomi, Sohna Road, Gurgaon. Deliveries are made on designated days across the service area. Additional delivery charges may apply for locations beyond 25 km or for special, additional deliveries.
     </div>
   </div>
 
