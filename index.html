@@ -563,36 +563,43 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--cream);bor
 .btn-yt{background:#ff0000;color:#fff;padding:14px 24px;font-size:0.82rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:8px;}
 .btn-ig{background:#1a1a1a;color:#fff;padding:14px 24px;font-size:0.82rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:8px;}
 
+
 /* ============ SECTION 20: FREE RESOURCE ============ */
+
 #resource {
   padding: 80px 100px;
   background: linear-gradient(135deg, #2e1e0a, #1f1407);
+  overflow: hidden;
 }
 
 .resource-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 80px;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
   align-items: center;
 }
+
+/* LEFT CONTENT */
 
 .resource-title {
   font-family: 'Playfair Display', serif;
   font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 900;
+  line-height: 1.2;
   color: #f5f0e8;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 
 .resource-sub {
   font-size: 0.95rem;
   line-height: 1.8;
-  color: rgba(245,240,232,0.75);
-  margin-bottom: 32px;
-  max-width: 480px;
+  color: rgba(245,240,232,0.8);
+  margin-bottom: 22px;
+  max-width: 500px;
 }
 
-/* CTA Button Upgrade */
+/* CTA BUTTON */
+
 .btn-gold {
   display: inline-block;
   background: linear-gradient(135deg, #c6a85a, #a8893f);
@@ -604,42 +611,59 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--cream);bor
   text-decoration: none;
   transition: all 0.3s ease;
   box-shadow: 0 8px 20px rgba(198,168,90,0.25);
+  border-radius: 4px;
 }
 
 .btn-gold:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: 0 12px 28px rgba(198,168,90,0.4);
 }
 
-/* Card Upgrade */
-.resource-card {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  padding: 60px 40px;
+.big-btn {
+  font-size: 0.85rem;
+  padding: 18px 28px;
+  letter-spacing: 0.08em;
   text-align: center;
-  backdrop-filter: blur(12px);
-  transition: all 0.4s ease;
 }
 
-.resource-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-  border-color: rgba(198,168,90,0.4);
+/* CTA ALIGNMENT */
+
+.resource-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-.resource-card .icon {
-  font-size: 2rem;
-  margin-bottom: 16px;
+.resource-cta p {
+  color: rgba(245,240,232,0.65);
 }
 
-.resource-card p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
-  font-style: italic;
-  color: rgba(245,240,232,0.75);
+/* RECIPE BOOK IMAGE */
+
+.resource-image {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Responsive */
+.resource-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  transition: transform 0.4s ease;
+}
+
+.resource-image img:hover {
+  transform: scale(1.02);
+}
+
+/* RESPONSIVE DESIGN */
+
 @media (max-width: 900px) {
   #resource {
     padding: 60px 30px;
@@ -647,29 +671,48 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--cream);bor
 
   .resource-grid {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 35px;
   }
 
   .resource-sub {
     max-width: 100%;
   }
 
-  .resource-card {
-    padding: 40px 30px;
+  .resource-image {
+    order: -1;
+  }
+
+  .resource-cta {
+    align-items: stretch;
+  }
+
+  .resource-cta .big-btn {
+    width: 100%;
+    box-sizing: border-box;
   }
 }
-/* Align CTA to center-right */
-.resource-cta {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-/* Bigger premium button */
-.big-btn {
-  font-size: 0.9rem;
-  padding: 18px 40px;
-  letter-spacing: 0.15em;
+@media (max-width: 480px) {
+  #resource {
+    padding: 45px 20px;
+  }
+
+  .resource-grid {
+    gap: 28px;
+  }
+
+  .resource-title {
+    font-size: 1.9rem;
+  }
+
+  .resource-sub {
+    font-size: 0.9rem;
+  }
+
+  .resource-cta .big-btn {
+    font-size: 0.75rem;
+    padding: 16px 12px;
+  }
 }
 
 /* ============ SECTION 21: FAQ ============ */
@@ -1292,7 +1335,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
   <div class="section-label" style="justify-content:center;color:var(--green-light);">BECOME A CO-FARMER</div>
   <h2 class="join-title">Join Aarogya Bhoomi</h2>
   <p class="join-sub">Take the first step toward a closer relationship with food, living soil and seasonal farming. Fill in our form and our team will get back to you.</p>
-  <a href="https://forms.gle/s7evFqxFEJ8UdGxU6" target="_blank" rel="noopener noreferrer" class="btn-join">CLICK TO FILL THE FORM →</a>
+  <a href="https://forms.gle/S5nqwCYUuFVK825C7" target="_blank" rel="noopener noreferrer" class="btn-join">CLICK TO FILL THE FORM →</a>
 </section>
 
 <!-- ===== SECTION 17: HOW FOOD IS GROWN ===== -->
@@ -1349,28 +1392,57 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
     </div>
   </div>
 </section>
+
+
 <!-- ===== SECTION 20: FREE RESOURCE ===== -->
 <section id="resource">
   <div class="resource-grid">
-    
+
     <!-- LEFT CONTENT -->
     <div>
-      <div class="section-label" style="color:var(--green-light);">FREE RESOURCE</div>
-      <h2 class="resource-title">Cook Healthy, Eat Fresh<br>at Your Home</h2>
+      <div class="section-label" style="color:var(--green-light);">
+        FREE RESOURCE
+      </div>
+
+      <h2 class="resource-title">
+        Eat Healthy. Eat Seasonal.<br>
+        Nourish Your Family.
+      </h2>
+
       <p class="resource-sub">
-       A practical recipe book to help you create simple, nutritious, and delicious meals - even if you’re just starting out in the kitchen. Learn easy cooking techniques, ingredient selection, and natural, wholesome recipes you can try this weekend.
+        Discover simple, wholesome and delicious recipes
+        to bring healthier eating into your family's
+        everyday life.
       </p>
+
+      <p class="resource-sub">
+        Get your FREE Healthy Recipe Book and explore
+        the goodness of traditional ingredients and
+        seasonal vegetables.
+      </p>
+
+      <div class="resource-cta">
+        <a href="https://forms.gle/HJW4AodwaUQRHTYE6"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="btn-gold big-btn">
+          GET YOUR FREE RECIPE BOOK →
+        </a>
+      </div>
     </div>
 
-    <!-- RIGHT CTA (Moved Here) -->
-    <div class="resource-cta">
-      <a href="https://forms.gle/4uY3KwMACXqEJdZr6" target="_blank" rel="noopener noreferrer" class="btn-gold big-btn">
-        DOWNLOAD FREE GUIDE →
-      </a>
+    <!-- RIGHT IMAGE -->
+    <div class="resource-image">
+      <img
+        src="free-recipe-book-banner.png"
+        alt="Free healthy recipe book with fresh seasonal vegetables"
+        loading="lazy">
     </div>
 
   </div>
 </section>
+
+
 
 
 <!-- ===== SECTION 21: FAQ ===== -->
@@ -1717,7 +1789,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
         <li><a href="https://wa.me/918700491699" target="_blank" rel="noopener noreferrer">Chat with Us</a></li>
         <li><a href="https://www.youtube.com/@VishuddhiVibes" target="_blank" rel="noopener noreferrer">YouTube</a></li>
         <li><a href="https://www.instagram.com/thynaahealthynaturally/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-        <li><a href="https://forms.gle/CcwmLDvwbN7JA8e49" target="_blank" rel="noopener noreferrer">Free Balcony Guide</a></li>
+        <li><a href="https://forms.gle/HJW4AodwaUQRHTYE6" target="_blank" rel="noopener noreferrer">GET YOUR FREE RECIPE BOOK</a></li>
       </ul>
     </div>
     <div class="footer-col">
