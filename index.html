@@ -768,6 +768,220 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
   .farm-img-item{width:260px;height:200px;}
   .cofarmer-card{padding:36px 24px;}
 }
+
+
+
+/* ============ FARM PRODUCTS SECTION ============ */
+
+#farm-products {
+  padding: 80px 50px;
+  background: #f5f0e8;
+}
+
+.products-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.products-heading {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 45px;
+}
+
+.products-heading .section-label {
+  justify-content: center;
+}
+
+.products-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+
+.products-intro {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #5a3e28;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.product-card {
+  background: #fffaf1;
+  border: 1px solid rgba(44,31,14,0.12);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(44,31,14,0.12);
+}
+
+.product-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #e8e0d1;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.04);
+}
+
+.product-discount {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #b5451b;
+  color: #fff;
+  padding: 7px 12px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  border-radius: 3px;
+}
+
+.product-info {
+  padding: 22px;
+}
+
+.product-category {
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  color: #3a6b45;
+  margin-bottom: 9px;
+  text-transform: uppercase;
+}
+
+.product-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1.35;
+  color: #2c1f0e;
+  margin-bottom: 10px;
+  min-height: 52px;
+}
+
+.product-description {
+  font-size: 0.84rem;
+  line-height: 1.65;
+  color: #705b43;
+  margin-bottom: 18px;
+  min-height: 44px;
+}
+
+.product-price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 18px;
+}
+
+.product-current-price {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #2e5438;
+}
+
+.product-original-price {
+  font-size: 0.9rem;
+  color: #927e69;
+  text-decoration: line-through;
+}
+
+.product-saving {
+  font-size: 0.76rem;
+  color: #b5451b;
+  font-weight: 700;
+  width: 100%;
+}
+
+.product-btn {
+  display: block;
+  text-align: center;
+  background: #3a6b45;
+  color: #fff;
+  padding: 13px 18px;
+  text-decoration: none;
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  transition: background 0.2s;
+}
+
+.product-btn:hover {
+  background: #2e5438;
+}
+
+.products-footer {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.products-footer p {
+  font-size: 0.9rem;
+  color: #705b43;
+  margin-bottom: 18px;
+}
+
+.products-footer a {
+  display: inline-block;
+  background: #2c1f0e;
+  color: #fff;
+  padding: 15px 30px;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+@media (max-width: 900px) {
+  #farm-products {
+    padding: 55px 24px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 560px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-name {
+    min-height: auto;
+  }
+
+  .product-description {
+    min-height: auto;
+  }
+}
+
+
 </style>
 </head>
 <body>
@@ -782,6 +996,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
     <li><a href="#about">THE PROBLEM</a></li>
     <li><a href="#ourway">HOW WE GROW</a></li>
     <li><a href="#cofarmer">BECOME A CO-FARMER</a></li>
+    <li><a href="#farm-products">SHOP PRODUCTS</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <a href="#plans" class="nav-join">JOIN NOW</a>
@@ -793,6 +1008,7 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
   <a href="#about" onclick="toggleMenu()">THE PROBLEM</a>
   <a href="#ourway" onclick="toggleMenu()">HOW WE GROW</a>
   <a href="#cofarmer" onclick="toggleMenu()">BECOME A CO-FARMER</a>
+  <a href="#farm-products" onclick="toggleMenu()">SHOP PRODUCTS</a>
   <a href="#faq" onclick="toggleMenu()">FAQ</a>
   <a href="#plans" class="mob-join" onclick="toggleMenu()">JOIN NOW</a>
 </div>
@@ -1300,6 +1516,250 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
 </section>
 
 
+
+
+
+<!-- ===== SECTION: FARM PRODUCTS ===== -->
+
+<section id="farm-products">
+
+  <div class="products-inner">
+
+    <div class="products-heading">
+      <div class="section-label">FFROM AAROGYA BHOOMI FARMS & NATURAL FARMERS</div>
+
+      <h2 class="products-title">
+        Bring Nature to Your Kitchen
+      </h2>
+
+      <p class="products-intro">
+        Discover naturally grown grains and traditionally prepared ghee
+  sourced from Aarogya Bhoomi farms and our network of natural farmers.
+  Supporting mindful farming, preserving traditional food varieties,
+  and bringing wholesome food to your family.
+      </p>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- SONAMOTI ATTA -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="product-sonamoti-atta.jpg"
+               alt="Naturally Grown Sonamoti Wheat Atta"
+               loading="lazy">
+          <span class="product-discount">21% OFF</span>
+        </div>
+
+        <div class="product-info">
+          <div class="product-category">Traditional Wheat</div>
+
+          <h3 class="product-name">
+            Naturally Grown Sonamoti Atta (Traditional Heritage Wheat Flour) - 5 KG
+          </h3>
+
+          <p class="product-description">
+            Rediscover Sonamoti, a traditional desi wheat treasured for its golden, pearl-like grains and distinctive flavour. Naturally grown without synthetic fertilizers or pesticides, it offers a wholesome source of fibre, protein and essential minerals, bringing variety to everyday meals. Its heritage character and satisfying taste make it a thoughtful choice for rotis, parathas and family meals.
+          </p>
+
+          <div class="product-price">
+            <span class="product-current-price">₹927</span>
+            <span class="product-original-price">₹1,170</span>
+            <span class="product-saving">You save ₹243</span>
+          </div>
+
+          <a href="https://pages.razorpay.com/stores/st_OIaDO1jpbd1If0"
+             target="_blank" rel="noopener noreferrer"
+             class="product-btn">SHOP NOW</a>
+        </div>
+      </div>
+
+
+      <!-- BANSI ATTA -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="product-bansi-atta.jpg"
+               alt="Naturally Grown Bansi Wheat Atta"
+               loading="lazy">
+          <span class="product-discount">22% OFF</span>
+        </div>
+
+        <div class="product-info">
+          <div class="product-category">Traditional Wheat</div>
+
+          <h3 class="product-name">
+            Naturally Grown Bansi Atta (High Fiber Whole Grain Wheat Flour) - 5 KG
+          </h3>
+
+          <p class="product-description">
+            Rediscover Bansi, a traditional desi wheat recognised for its warm red hue, rich taste and naturally wholesome character. Grown by our farmers using natural farming practices, it offers dietary fibre, protein and essential minerals that complement a balanced diet. Its hearty flavour and satisfying texture make it ideal for everyday rotis, parathas and family meals.p>
+
+          <div class="product-price">
+            <span class="product-current-price">₹745</span>
+            <span class="product-original-price">₹955</span>
+            <span class="product-saving">You save ₹210</span>
+          </div>
+
+          <a href="https://pages.razorpay.com/stores/st_OIaDO1jpbd1If0"
+             target="_blank" rel="noopener noreferrer"
+             class="product-btn">SHOP NOW</a>
+        </div>
+      </div>
+
+
+      <!-- RED RICE -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="product-red-rice.jpg"
+               alt="Naturally Grown Desi Red Rice"
+               loading="lazy">
+          <span class="product-discount">12% OFF</span>
+        </div>
+
+        <div class="product-info">
+          <div class="product-category">Traditional Rice</div>
+
+          <h3 class="product-name">
+            Premium Aged Naturally Grown Desi Red Rice – 1 kg
+          </h3>
+
+          <p class="product-description">
+            Rediscover traditional desi red rice, valued for its earthy aroma, mildly nutty flavour and naturally reddish bran layer. Naturally grown at Aarogya Bhoomi and carefully stored for one year, it provides dietary fibre and beneficial plant compounds, making it a wholesome alternative to polished white rice. Enjoy its distinctive character in everyday family meals and gatherings.
+          </p>
+
+          <div class="product-price">
+            <span class="product-current-price">₹350</span>
+            <span class="product-original-price">₹396</span>
+            <span class="product-saving">You save ₹46</span>
+          </div>
+
+          <a href="https://pages.razorpay.com/stores/st_OIaDO1jpbd1If0"
+             target="_blank" rel="noopener noreferrer"
+             class="product-btn">SHOP NOW</a>
+        </div>
+      </div>
+
+
+      <!-- BLACK RICE -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="product-black-rice.jpg"
+               alt="Naturally Grown Desi Black Rice"
+               loading="lazy">
+          <span class="product-discount">12% OFF</span>
+        </div>
+
+        <div class="product-info">
+          <div class="product-category">Traditional Rice</div>
+
+          <h3 class="product-name">
+            Premium Aged Naturally Grown Desi Black Rice – 1 kg
+          </h3>
+
+          <p class="product-description">
+            Rediscover traditional desi black rice, valued for its earthy aroma, mildly nutty flavour and deep purple-black bran layer. Naturally grown at Aarogya Bhoomi and carefully stored for one year, it contains dietary fibre and anthocyanins, the plant compounds behind its distinctive colour. Add this heritage grain, with its unique character, to everyday family meals and gatherings.
+          </p>
+
+          <div class="product-price">
+            <span class="product-current-price">₹350</span>
+            <span class="product-original-price">₹396</span>
+            <span class="product-saving">You save ₹46</span>
+          </div>
+
+          <a href="https://pages.razorpay.com/stores/st_OIaDO1jpbd1If0"
+             target="_blank" rel="noopener noreferrer"
+             class="product-btn">SHOP NOW</a>
+        </div>
+      </div>
+
+
+<!-- VEDIC KHAND -->
+<div class="product-card">
+  <div class="product-image">
+    <img src="product-vedic-khand.jpg"
+         alt="Vedic Khand from Naturally Grown Sugarcane"
+         loading="lazy">
+    <span class="product-discount">17% OFF</span>
+  </div>
+
+  <div class="product-info">
+    <div class="product-category">Traditional Sweetener</div>
+
+    <h3 class="product-name">
+      Vedic Khand From Naturally Grown Sugarcane – 1 KG
+    </h3>
+
+    <p class="product-description">
+      Rediscover the traditional sweetness of Vedic Khand,
+      prepared from naturally grown sugarcane. Made using
+      traditional methods, it brings the familiar character
+      and delicate sweetness of this traditional Indian
+      sweetener to your kitchen. Enjoy it in tea, milk,
+      sweets, desserts and your favourite everyday recipes.
+    </p>
+
+    <div class="product-price">
+      <span class="product-current-price">₹237</span>
+      <span class="product-original-price">₹285</span>
+      <span class="product-saving">You save ₹48</span>
+    </div>
+
+    <a href="https://pages.razorpay.com/stores/st_OIaDO1jpbd1If0"
+       target="_blank" rel="noopener noreferrer"
+       class="product-btn">SHOP NOW</a>
+  </div>
+</div>
+
+
+      <!-- GIR COW GHEE -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="product-gir-cow-ghee.jpg"
+               alt="Open-Grazed Gir Cow A2 Vedic Bilona Ghee"
+               loading="lazy">
+          <span class="product-discount">27% OFF</span>
+        </div>
+
+        <div class="product-info">
+          <div class="product-category">Traditional Bilona Ghee</div>
+
+          <h3 class="product-name">
+            Premium Open-Grazed Gir Cow A2 Vedic Bilona Ghee – 1 Litre
+          </h3>
+
+          <p class="product-description">
+            Rediscover the richness of Gir cow bilona ghee, traditionally prepared from curd-churned butter using the time-honoured Bilona method. Made in small batches from milk of indigenous Gir cows raised with open grazing, it provides concentrated energy and brings aroma, richness and flavour to everyday cooking and festive preparations. A little adds depth to traditional meals.
+          </p>
+
+          <div class="product-price">
+            <span class="product-current-price">₹3,782</span>
+            <span class="product-original-price">₹5,198</span>
+            <span class="product-saving">You save ₹1,416</span>
+          </div>
+
+          <a href="https://pages.razorpay.com/stores/st_OIaDO1jpbd1If0"
+             target="_blank" rel="noopener noreferrer"
+             class="product-btn">SHOP NOW</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="products-footer">
+      <p>Discover more products and place your order through our store.</p>
+
+      <a href="https://pages.razorpay.com/stores/st_OIaDO1jpbd1If0"
+         target="_blank" rel="noopener noreferrer">
+        EXPLORE ALL PRODUCTS →
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+
+
 <!-- ===== SECTION 14: TESTIMONIALS ===== -->
 <section id="testimonials">
   <div class="section-label">WHY FAMILIES JOIN</div>
@@ -1759,6 +2219,117 @@ footer{background:#0f0e06;padding:60px 80px 30px;}
       practices during your visits.
     </div>
   </div>
+
+
+<!-- FARM PRODUCTS & PURCHASES -->
+
+<div class="faq-category">
+  <h3>Farm Products & Traditional Foods</h3>
+  <p>
+    Beyond co-farming, explore naturally grown grains,
+    traditional foods and products from our farms and
+    network of natural farmers.
+  </p>
+</div>
+
+<!-- 17. WHAT ARE FARM PRODUCTS? -->
+<div class="faq-item">
+  <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+    What other farm products are available from Aarogya Bhoomi?
+    <span class="faq-icon">+</span>
+  </button>
+  <div class="faq-a">
+    Alongside our seasonal vegetables, we offer a selection
+    of traditional food products sourced from Aarogya Bhoomi
+    farms and our network of natural farmers.
+
+    These include traditional wheat varieties such as
+    Sonamoti and Bansi, desi red and black rice, pulses,
+    natural honey, khand, jaggery, Gir cow Bilona ghee
+    and other wholesome farm products.
+
+    Our offerings depend on seasonal availability and
+    harvests, with a focus on traditional varieties,
+    natural farming and mindful sourcing.
+  </div>
+</div>
+
+<!-- 18. ARE PRODUCTS INCLUDED IN MEMBERSHIP? -->
+<div class="faq-item">
+  <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+    Are grains, pulses, ghee and other products included in co-farmer membership?
+    <span class="faq-icon">+</span>
+  </button>
+  <div class="faq-a">
+    No. Co-farmer membership is primarily about participating
+    in the growing of seasonal vegetables at Aarogya Bhoomi,
+    using your designated farming area and being part of
+    the farming journey.
+
+    Products such as wheat, rice, pulses, honey, khand,
+    jaggery and ghee are separate purchases and are not
+    included in the membership fee.
+
+    You can purchase these products independently,
+    whether or not you are a co-farmer.
+  </div>
+</div>
+
+<!-- 19. CO-FARMER SPECIAL PRICES -->
+<div class="faq-item">
+  <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+    Do co-farmers get special prices on grains and other products?
+    <span class="faq-icon">+</span>
+  </button>
+  <div class="faq-a">
+    Yes! Co-farmers enjoy preferential prices on selected
+    products from Aarogya Bhoomi and our natural farming
+    network.
+
+    This includes grains, rice, pulses, honey, khand,
+    jaggery, ghee and other seasonal offerings.
+
+    These purchases are entirely optional and are charged
+    separately from your co-farmer membership. It is our
+    way of extending the benefits of the farming community
+    beyond the vegetables grown on your plot.
+  </div>
+</div>
+
+<!-- 20. CAN NON-MEMBERS PURCHASE? -->
+<div class="faq-item">
+  <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+    Can I buy farm products without becoming a co-farmer?
+    <span class="faq-icon">+</span>
+  </button>
+  <div class="faq-a">
+    Absolutely! Our grains, pulses, honey, khand, jaggery,
+    ghee and other farm products are available for purchase
+    by everyone, subject to availability.
+
+    You do not need a co-farfer membership to order them.
+    Co-farmers simply enjoy additional preferential pricing
+    on selected products.
+  </div>
+</div>
+
+<!-- 21. PRODUCT DELIVERY -->
+<div class="faq-item">
+  <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+    Can I order these products for home delivery?
+    <span class="faq-icon">+</span>
+  </button>
+  <div class="faq-a">
+    Yes. You can place separate orders for available
+    farm products through our product collection.
+
+    Home delivery is available in selected locations,
+    subject to delivery charges and availability.
+    Co-farmers can access their applicable special prices
+    when placing orders.
+  </div>
+</div>
+
 
 </section>
 
